@@ -1,0 +1,55 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --link-color: #0645ad;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    margin: 0;
+}
+
+#theme-toggle {
+    position: absolute;
+    opacity: 0;
+}
+
+#theme-toggle + .container {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+#theme-toggle:checked + .container {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --link-color: #9cf;
+}
+
+.top-controls {
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+}
+
+.theme-switch {
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+nav a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    margin: 1em 0;
+}
