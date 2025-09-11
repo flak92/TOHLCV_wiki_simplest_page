@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Trading Web App</title>
+<title>Trading Bot Wiki</title>
 <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
 <input type="checkbox" id="theme-toggle">
-<div class="container">
-  <div class="top-controls">
-    <select onchange="location = this.value;">
-      <option value="/index.html" selected>EN</option>
-      <option value="/pl/index.html">PL</option>
-    </select>
-    <label for="theme-toggle" class="theme-switch">Dark</label>
-  </div>
-  <header>
-    <h1>Trading App Wiki</h1>
-    <nav>
-      <a href="pages/intro.html">Intro</a> |
-      <a href="pages/ml-vs-hardcoded.html">ML vs Hardcoded</a> |
-      <a href="pages/strategy-comparisons.html">Strategy Comparisons</a> |
-      <a href="pages/indicators.html">Indicators</a> |
-      <a href="pages/how-to-deploy.html">How to Deploy</a>
-    </nav>
-    <hr>
-  </header>
-  <main>
-    <p>Welcome to a plain collection of notes on trading solutions, machine learning calibration, and technical automation.</p>
-  </main>
-  <footer>
-    <hr>
-    <p>Last updated: 2024</p>
-  </footer>
+<div class="wrapper">
+<nav class="sidebar">
+<div class="top-bar">
+  <details class="language">
+    <summary>EN</summary>
+    <a href="index.html">EN</a>
+    <a href="pl/index.html">PL</a>
+  </details>
+  <label for="theme-toggle" class="theme-switch"></label>
+</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#ml-vs-hardcoded">ML vs Hardcoded</a></li>
+<li><a href="#strategy-comparisons">Strategy Comparisons</a></li>
+<li><a href="#indicators">Indicators</a></li>
+<li><a href="#how-to-deploy">How to Deploy</a></li>
+<li><a href="#glossary">Glossary</a></li>
+</ul>
+</nav>
+<main class="content">
+<section id="home"><h2>Trading Bot Wiki</h2><p>Welcome to a plain collection of notes on trading bots, machine learning calibration, and technical automation. Start with the <a href="#intro">Introduction</a> or jump to the <a href="#glossary">Glossary</a>.</p></section>
+<section id="intro"><h2>Introduction</h2><p>Overview of the project's purpose and how to navigate the pages. For terminology see <a href="#indicators">Indicators</a>.</p></section>
+<section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Distinction between data-driven models and bots built on fixed rule sets. Compare approaches in <a href="#strategy-comparisons">Strategy Comparisons</a>.</p></section>
+<section id="strategy-comparisons"><h2>Strategy Comparisons</h2><p>Notes on comparing simple trading strategies and calibration approaches. Learn more about building blocks in <a href="#indicators">Indicators</a>.</p></section>
+<section id="indicators"><h2>Indicators</h2><p>Terminology notes: indicator vs indykator vs oscillator. Revisit the basics in <a href="#intro">Introduction</a>.</p></section>
+<section id="how-to-deploy"><h2>How to Deploy</h2><p>Step-by-step notes on setting up and running a trading bot. Before deployment, review <a href="#strategy-comparisons">Strategy Comparisons</a>.</p></section>
+<section id="glossary"><h2>Glossary</h2><h3>Basic Indicators and Metrics</h3><dl><dt id='rsi'>RSI</dt><dd>Oscillator measuring trend strength (overbought/oversold).</dd><dt id='macd'>MACD</dt><dd>Moving average convergence divergence based on differences between <a href='#ma'>MA</a>s.</dd><dt id='sma'>SMA</dt><dd>Simple moving average; a basic <a href='#ma'>MA</a>.</dd><dt id='ema'>EMA</dt><dd>Exponential moving average; weighted <a href='#ma'>MA</a>.</dd><dt id='ma'>MA</dt><dd>General moving average; basis for <a href='#macd'>MACD</a> and <a href='#sma'>SMA</a>.</dd><dt id='cagr'>CAGR</dt><dd>Compound annual growth rate.</dd><dt id='sharpe'>Sharpe Ratio</dt><dd>Return relative to volatility risk.</dd><dt id='sortino'>Sortino Ratio</dt><dd>Sharpe variant considering downside risk only.</dd><dt id='maxdd'>Max Drawdown</dt><dd>Maximum capital drop from a peak.</dd></dl><h3>Risk &amp; Money Management</h3><dl><dt id='kelly'>Kelly Sizing</dt><dd>Optimal position sizing formula.</dd><dt id='stop-loss'>Stop Loss</dt><dd>Order limiting loss; see also <a href='#trailing-stop'>Trailing Stop</a>.</dd><dt id='trailing-stop'>Trailing Stop</dt><dd>Stop loss that follows price movement.</dd><dt id='take-profit'>Take Profit</dt><dd>Automatic order to lock gains.</dd><dt id='trailing-take-profit'>Trailing Take Profit</dt><dd>Take profit level moving with price.</dd><dt id='leverage'>Leverage</dt><dd>Borrowed exposure multiplier.</dd><dt id='martingale'>Martingale</dt><dd>Doubling stake after losses.</dd><dt id='delta-neutral'>Delta Neutral</dt><dd>Hedged position with no directional exposure.</dd><dt id='hedging'>Hedging</dt><dd>Risk reduction by offsetting positions.</dd></dl><h3>Instruments &amp; Markets</h3><dl><dt id='spot'>Spot Market</dt><dd>Immediate asset exchange.</dd><dt id='perpetual'>Perpetual Futures</dt><dd>Futures without expiry; tied to <a href='#funding'>funding rate</a>.</dd><dt id='options'>Options</dt><dd>Right to buy or sell in future.</dd><dt id='etfs'>ETFs</dt><dd>Exchange-traded funds holding baskets of assets.</dd><dt id='long'>Long Position</dt><dd>Bet on price increase.</dd><dt id='short'>Short Position</dt><dd>Bet on price decrease.</dd></dl><h3>Quant &amp; ML in Trading</h3><dl><dt id='ohlcv'>OHLCV</dt><dd>Candlestick data: open, high, low, close, volume.</dd><dt id='lstm'>LSTM</dt><dd>Recurrent neural network for sequences.</dd><dt id='random-forest'>Random Forest</dt><dd>Ensemble of decision trees.</dd><dt id='xgboost'>XGBoost</dt><dd>Gradient boosting method.</dd><dt id='footprint'>Footprint / CVD</dt><dd>Volume and order flow analysis.</dd></dl><h3>Trading Styles</h3><dl><dt id='scalping'>Scalping</dt><dd>Fast trades for small profits.</dd><dt id='swing'>Swing Trading</dt><dd>Holding positions for days or weeks.</dd><dt id='day-trading'>Day Trading</dt><dd>Closing positions within the day.</dd><dt id='position-trading'>Position Trading</dt><dd>Long-term investing.</dd></dl><h3>Bybit/Binance Terms</h3><dl><dt id='funding'>Funding Rate</dt><dd>Payment aligning <a href='#perpetual'>perpetual futures</a> price with spot.</dd><dt id='margin'>Margin</dt><dd>Collateral securing leveraged trades.</dd><dt id='pnl'>PnL</dt><dd>Profit and loss, realized or unrealized.</dd><dt id='liquidation'>Liquidation</dt><dd>Forced closing due to insufficient <a href='#margin'>margin</a>.</dd></dl></section>
+<footer><p>Last updated: 2024</p></footer>
+</main>
 </div>
 </body>
 </html>
