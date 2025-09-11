@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trading Bot Wiki</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<input type="checkbox" id="theme-toggle">
+<div class="wrapper">
+<nav class="sidebar">
+<div class="top-bar">
+  <details class="language">
+    <summary>EN</summary>
+    <a href="index.html">EN</a>
+    <a href="pl/index.html">PL</a>
+  </details>
+  <label for="theme-toggle" class="theme-switch"></label>
+</div>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#ml-vs-hardcoded">ML vs Hardcoded</a></li>
+<li><a href="#strategy-comparisons">Strategy Comparisons</a></li>
+<li><a href="#indicators">Indicators</a></li>
+<li><a href="#how-to-deploy">How to Deploy</a></li>
+<li><a href="#glossary">Glossary</a></li>
+</ul>
+</nav>
+<main class="content">
+<section id="home"><h2>Trading Bot Wiki</h2><p>Welcome to a plain collection of notes on trading bots, machine learning calibration, and technical automation. Start with the <a href="#intro">Introduction</a>. For key terms visit the <a href="#glossary">Glossary</a>.</p></section>
+<section id="intro"><h2>Introduction</h2><p>Overview of the project's purpose and how to navigate the pages. For terminology see <a href="#indicators">Indicators</a>.</p></section>
+<section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Distinction between data-driven models and bots built on fixed rule sets. Compare approaches in <a href="#strategy-comparisons">Strategy Comparisons</a>.</p></section>
+<section id="strategy-comparisons"><h2>Strategy Comparisons</h2><p>Notes on comparing simple trading strategies and calibration approaches. Learn more about building blocks in <a href="#indicators">Indicators</a>.</p></section>
+<section id="indicators"><h2>Indicators</h2><p>Terminology notes: indicator vs indykator vs oscillator. Revisit the basics in <a href="#intro">Introduction</a>.</p></section>
+<section id="how-to-deploy"><h2>How to Deploy</h2><p>Step-by-step notes on setting up and running a trading bot. Before deployment, review <a href="#strategy-comparisons">Strategy Comparisons</a>.</p></section>
+<section id="glossary"><h2>Glossary</h2><h3>Basic Indicators and Metrics</h3>
+<dl>
+<dt id="rsi">RSI</dt><dd>Oscillator measuring trend strength (overbought/oversold).</dd>
+<dt id="macd">MACD</dt><dd>Indicator based on moving averages to gauge momentum.</dd>
+<dt id="sma">SMA</dt><dd>Simple moving average.</dd>
+<dt id="ema">EMA</dt><dd>Exponential moving average; gives more weight to recent prices.</dd>
+<dt id="ma">MA</dt><dd>Generic moving average, see <a href="#sma">SMA</a> or <a href="#ema">EMA</a>.</dd>
+<dt id="cagr">CAGR</dt><dd>Compound annual growth rate.</dd>
+<dt id="sharpe">Sharpe Ratio</dt><dd>Return relative to risk.</dd>
+<dt id="sortino">Sortino Ratio</dt><dd>Variant of <a href="#sharpe">Sharpe</a> focusing on downside risk.</dd>
+<dt id="maxdd">Max Drawdown</dt><dd>Largest capital drop from peak to trough.</dd>
+</dl>
+<h3>Risk & Money Management</h3>
+<dl>
+<dt id="kelly">Kelly Sizing</dt><dd>Optimal position sizing based on win probability.</dd>
+<dt id="stop-loss">Stop Loss</dt><dd>Order limiting loss.</dd>
+<dt id="trailing-stop">Trailing Stop</dt><dd>Stop loss moving with price.</dd>
+<dt id="take-profit">Take Profit</dt><dd>Automatic exit at target gain.</dd>
+<dt id="trailing-take-profit">Trailing Take Profit</dt><dd>Take profit that trails price upward.</dd>
+<dt id="leverage">Leverage</dt><dd>Borrowed capital to amplify exposure.</dd>
+<dt id="martingale">Martingale</dt><dd>Betting strategy doubling after losses.</dd>
+<dt id="delta-neutral">Delta Neutral</dt><dd>Hedged to offset <a href="#long-position">long</a>/<a href="#short-position">short</a> exposure.</dd>
+<dt id="hedging">Hedging</dt><dd>Risk reduction by offsetting positions.</dd>
+</dl>
+<h3>Instruments & Markets</h3>
+<dl>
+<dt id="spot">Spot Market</dt><dd>Immediate exchange of assets.</dd>
+<dt id="perpetuals">Perpetual Futures</dt><dd>Contracts without expiry tied by <a href="#funding-rate">funding rate</a>.</dd>
+<dt id="options">Options</dt><dd>Rights to buy or sell in the future.</dd>
+<dt id="etfs">ETFs</dt><dd>Exchange traded funds.</dd>
+<dt id="long-position">Long Position</dt><dd>Bet on rising price.</dd>
+<dt id="short-position">Short Position</dt><dd>Bet on falling price.</dd>
+</dl>
+<h3>Quant & ML in Trading</h3>
+<dl>
+<dt id="ohlcv">OHLCV</dt><dd>Candle data: open, high, low, close, volume.</dd>
+<dt id="lstm">LSTM</dt><dd>Recurrent neural net for time series.</dd>
+<dt id="random-forest">Random Forest</dt><dd>Ensemble method of decision trees.</dd>
+<dt id="xgboost">XGBoost</dt><dd>Gradient boosting algorithm.</dd>
+<dt id="footprint">Footprint / CVD</dt><dd>Volume and order flow analysis.</dd>
+</dl>
+<h3>Trading Styles</h3>
+<dl>
+<dt id="scalping">Scalping</dt><dd>Quick in-and-out trades for small gains.</dd>
+<dt id="swing-trading">Swing Trading</dt><dd>Holding positions for days or weeks.</dd>
+<dt id="day-trading">Day Trading</dt><dd>All positions closed within one day.</dd>
+<dt id="position-trading">Position Trading</dt><dd>Long-term investing.</dd>
+</dl>
+<h3>Bybit/Binance Specific</h3>
+<dl>
+<dt id="funding-rate">Funding Rate</dt><dd>Mechanism aligning perpetual price with spot.</dd>
+<dt id="margin">Margin</dt><dd>Collateral supporting leveraged positions.</dd>
+<dt id="pnl">PnL</dt><dd>Profit and loss, realized or unrealized.</dd>
+<dt id="liquidation">Liquidation</dt><dd>Forced closure due to insufficient margin.</dd>
+</dl></section>
+<footer><p>Last updated: 2024</p></footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "site_title": {
+    "en": "Trading Bot Wiki",
+    "pl": "Wiki Botów Tradingowych"
+  },
+  "index_content": {
+    "en": "<p>Welcome to a plain collection of notes on trading bots, machine learning calibration, and technical automation. Start with the <a href=\"#intro\">Introduction</a>. For key terms visit the <a href=\"#glossary\">Glossary</a>.</p>",
+    "pl": "<p>Witamy w zbiorze surowych notatek o botach handlowych, kalibracji modeli ML i automatyzacji. Zacznij od <a href=\"#intro\">Wprowadzenia</a>. Kluczowe pojęcia znajdziesz w <a href=\"#glossary\">Glosariuszu</a>.</p>"
+  },
+  "pages": [
+    {
+      "slug": "intro",
+      "title": {"en": "Introduction", "pl": "Wprowadzenie"},
+      "content": {
+        "en": "<p>Overview of the project's purpose and how to navigate the pages. For terminology see <a href=\"#indicators\">Indicators</a>.</p>",
+        "pl": "<p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href=\"#indicators\">Wskaźniki</a>.</p>"
+      }
+    },
+    {
+      "slug": "ml-vs-hardcoded",
+      "title": {"en": "ML vs Hardcoded", "pl": "ML vs Hardcoded"},
+      "content": {
+        "en": "<p>Distinction between data-driven models and bots built on fixed rule sets. Compare approaches in <a href=\"#strategy-comparisons\">Strategy Comparisons</a>.</p>",
+        "pl": "<p>Różnice między modelami opartymi na danych a botami o stałych regułach. Porównaj podejścia w <a href=\"#strategy-comparisons\">Porównaniach Strategii</a>.</p>"
+      }
+    },
+    {
+      "slug": "strategy-comparisons",
+      "title": {"en": "Strategy Comparisons", "pl": "Porównania Strategii"},
+      "content": {
+        "en": "<p>Notes on comparing simple trading strategies and calibration approaches. Learn more about building blocks in <a href=\"#indicators\">Indicators</a>.</p>",
+        "pl": "<p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href=\"#indicators\">Wskaźnikach</a>.</p>"
+      }
+    },
+    {
+      "slug": "indicators",
+      "title": {"en": "Indicators", "pl": "Wskaźniki"},
+      "content": {
+        "en": "<p>Terminology notes: indicator vs indykator vs oscillator. Revisit the basics in <a href=\"#intro\">Introduction</a>.</p>",
+        "pl": "<p>Uwagi terminologiczne: wskaźnik vs indykator vs oscylator. Wróć do podstaw w <a href=\"#intro\">Wprowadzeniu</a>.</p>"
+      }
+    },
+    {
+      "slug": "how-to-deploy",
+      "title": {"en": "How to Deploy", "pl": "Jak Wdrożyć"},
+      "content": {
+        "en": "<p>Step-by-step notes on setting up and running a trading bot. Before deployment, review <a href=\"#strategy-comparisons\">Strategy Comparisons</a>.</p>",
+        "pl": "<p>Kroki potrzebne do przygotowania i uruchomienia bota tradingowego. Przed wdrożeniem przejrzyj <a href=\"#strategy-comparisons\">Porównania Strategii</a>.</p>"
+      }
+    },
+    {
+      "slug": "glossary",
+      "title": {"en": "Glossary", "pl": "Glosariusz"},
+      "content": {
+        "en": "<h3>Basic Indicators and Metrics</h3>\n<dl>\n<dt id=\"rsi\">RSI</dt><dd>Oscillator measuring trend strength (overbought/oversold).</dd>\n<dt id=\"macd\">MACD</dt><dd>Indicator based on moving averages to gauge momentum.</dd>\n<dt id=\"sma\">SMA</dt><dd>Simple moving average.</dd>\n<dt id=\"ema\">EMA</dt><dd>Exponential moving average; gives more weight to recent prices.</dd>\n<dt id=\"ma\">MA</dt><dd>Generic moving average, see <a href=\"#sma\">SMA</a> or <a href=\"#ema\">EMA</a>.</dd>\n<dt id=\"cagr\">CAGR</dt><dd>Compound annual growth rate.</dd>\n<dt id=\"sharpe\">Sharpe Ratio</dt><dd>Return relative to risk.</dd>\n<dt id=\"sortino\">Sortino Ratio</dt><dd>Variant of <a href=\"#sharpe\">Sharpe</a> focusing on downside risk.</dd>\n<dt id=\"maxdd\">Max Drawdown</dt><dd>Largest capital drop from peak to trough.</dd>\n</dl>\n<h3>Risk & Money Management</h3>\n<dl>\n<dt id=\"kelly\">Kelly Sizing</dt><dd>Optimal position sizing based on win probability.</dd>\n<dt id=\"stop-loss\">Stop Loss</dt><dd>Order limiting loss.</dd>\n<dt id=\"trailing-stop\">Trailing Stop</dt><dd>Stop loss moving with price.</dd>\n<dt id=\"take-profit\">Take Profit</dt><dd>Automatic exit at target gain.</dd>\n<dt id=\"trailing-take-profit\">Trailing Take Profit</dt><dd>Take profit that trails price upward.</dd>\n<dt id=\"leverage\">Leverage</dt><dd>Borrowed capital to amplify exposure.</dd>\n<dt id=\"martingale\">Martingale</dt><dd>Betting strategy doubling after losses.</dd>\n<dt id=\"delta-neutral\">Delta Neutral</dt><dd>Hedged to offset <a href=\"#long-position\">long</a>/<a href=\"#short-position\">short</a> exposure.</dd>\n<dt id=\"hedging\">Hedging</dt><dd>Risk reduction by offsetting positions.</dd>\n</dl>\n<h3>Instruments & Markets</h3>\n<dl>\n<dt id=\"spot\">Spot Market</dt><dd>Immediate exchange of assets.</dd>\n<dt id=\"perpetuals\">Perpetual Futures</dt><dd>Contracts without expiry tied by <a href=\"#funding-rate\">funding rate</a>.</dd>\n<dt id=\"options\">Options</dt><dd>Rights to buy or sell in the future.</dd>\n<dt id=\"etfs\">ETFs</dt><dd>Exchange traded funds.</dd>\n<dt id=\"long-position\">Long Position</dt><dd>Bet on rising price.</dd>\n<dt id=\"short-position\">Short Position</dt><dd>Bet on falling price.</dd>\n</dl>\n<h3>Quant & ML in Trading</h3>\n<dl>\n<dt id=\"ohlcv\">OHLCV</dt><dd>Candle data: open, high, low, close, volume.</dd>\n<dt id=\"lstm\">LSTM</dt><dd>Recurrent neural net for time series.</dd>\n<dt id=\"random-forest\">Random Forest</dt><dd>Ensemble method of decision trees.</dd>\n<dt id=\"xgboost\">XGBoost</dt><dd>Gradient boosting algorithm.</dd>\n<dt id=\"footprint\">Footprint / CVD</dt><dd>Volume and order flow analysis.</dd>\n</dl>\n<h3>Trading Styles</h3>\n<dl>\n<dt id=\"scalping\">Scalping</dt><dd>Quick in-and-out trades for small gains.</dd>\n<dt id=\"swing-trading\">Swing Trading</dt><dd>Holding positions for days or weeks.</dd>\n<dt id=\"day-trading\">Day Trading</dt><dd>All positions closed within one day.</dd>\n<dt id=\"position-trading\">Position Trading</dt><dd>Long-term investing.</dd>\n</dl>\n<h3>Bybit/Binance Specific</h3>\n<dl>\n<dt id=\"funding-rate\">Funding Rate</dt><dd>Mechanism aligning perpetual price with spot.</dd>\n<dt id=\"margin\">Margin</dt><dd>Collateral supporting leveraged positions.</dd>\n<dt id=\"pnl\">PnL</dt><dd>Profit and loss, realized or unrealized.</dd>\n<dt id=\"liquidation\">Liquidation</dt><dd>Forced closure due to insufficient margin.</dd>\n</dl>",
+        "pl": "<h3>Podstawowe wskaźniki i metryki</h3>\n<dl>\n<dt id=\"rsi\">RSI</dt><dd>Oscylator mierzący siłę trendu (wykupienie/wyprzedanie).</dd>\n<dt id=\"macd\">MACD</dt><dd>Wskaźnik oparty na średnich ruchomych do oceny momentum.</dd>\n<dt id=\"sma\">SMA</dt><dd>Prosta średnia ruchoma.</dd>\n<dt id=\"ema\">EMA</dt><dd>Wykładnicza średnia ruchoma, większy nacisk na świeże ceny.</dd>\n<dt id=\"ma\">MA</dt><dd>Uogólniona średnia ruchoma, zobacz <a href=\"#sma\">SMA</a> lub <a href=\"#ema\">EMA</a>.</dd>\n<dt id=\"cagr\">CAGR</dt><dd>Średnioroczna stopa zwrotu skumulowana.</dd>\n<dt id=\"sharpe\">Sharpe Ratio</dt><dd>Miara zysku względem ryzyka.</dd>\n<dt id=\"sortino\">Sortino Ratio</dt><dd>Odmiana <a href=\"#sharpe\">Sharpe'a</a> uwzględniająca tylko ryzyko spadków.</dd>\n<dt id=\"maxdd\">Max Drawdown</dt><dd>Maksymalne obsunięcie kapitału.</dd>\n</dl>\n<h3>Risk & Money Management</h3>\n<dl>\n<dt id=\"kelly\">Kelly Sizing</dt><dd>Optymalny sizing pozycji według prawdopodobieństwa wygranej.</dd>\n<dt id=\"stop-loss\">Stop Loss</dt><dd>Zlecenie ograniczające stratę.</dd>\n<dt id=\"trailing-stop\">Trailing Stop</dt><dd>Stop loss przesuwający się wraz z ceną.</dd>\n<dt id=\"take-profit\">Take Profit</dt><dd>Automatyczne zamknięcie pozycji na zysku.</dd>\n<dt id=\"trailing-take-profit\">Trailing Take Profit</dt><dd>Take profit podążający za rosnącą ceną.</dd>\n<dt id=\"leverage\">Leverage</dt><dd>Dźwignia finansowa.</dd>\n<dt id=\"martingale\">Martingale</dt><dd>Strategia podwajania stawki po stracie.</dd>\n<dt id=\"delta-neutral\">Delta Neutral</dt><dd>Strategia równoważąca ekspozycję <a href=\"#long-position\">long</a>/<a href=\"#short-position\">short</a>.</dd>\n<dt id=\"hedging\">Hedging</dt><dd>Zabezpieczenie ryzyka poprzez pozycje kompensujące.</dd>\n</dl>\n<h3>Instrumenty & Rynki</h3>\n<dl>\n<dt id=\"spot\">Rynek Spot</dt><dd>Natychmiastowa wymiana aktywów.</dd>\n<dt id=\"perpetuals\">Kontrakty Perpetual</dt><dd>Kontrakty bez daty wygaśnięcia powiązane <a href=\"#funding-rate\">fundingiem</a>.</dd>\n<dt id=\"options\">Opcje</dt><dd>Prawo do kupna/sprzedaży w przyszłości.</dd>\n<dt id=\"etfs\">ETF</dt><dd>Fundusze notowane na giełdzie.</dd>\n<dt id=\"long-position\">Pozycja Long</dt><dd>Zakład na wzrost ceny.</dd>\n<dt id=\"short-position\">Pozycja Short</dt><dd>Zakład na spadek ceny.</dd>\n</dl>\n<h3>Kwant i ML w tradingu</h3>\n<dl>\n<dt id=\"ohlcv\">OHLCV</dt><dd>Dane świecowe: open, high, low, close, volume.</dd>\n<dt id=\"lstm\">LSTM</dt><dd>Rekurencyjna sieć do sekwencji czasowych.</dd>\n<dt id=\"random-forest\">Random Forest</dt><dd>Metoda ensemble z drzew decyzyjnych.</dd>\n<dt id=\"xgboost\">XGBoost</dt><dd>Gradient boosting dla danych finansowych.</dd>\n<dt id=\"footprint\">Footprint / CVD</dt><dd>Analiza wolumenu i przepływu zleceń.</dd>\n</dl>\n<h3>Style i strategie handlu</h3>\n<dl>\n<dt id=\"scalping\">Scalping</dt><dd>Szybkie wejścia/wyjścia, małe zyski, wysoka częstotliwość.</dd>\n<dt id=\"swing-trading\">Swing Trading</dt><dd>Trzymanie pozycji od dni do tygodni.</dd>\n<dt id=\"day-trading\">Day Trading</dt><dd>Zamykanie pozycji w ciągu dnia.</dd>\n<dt id=\"position-trading\">Position Trading</dt><dd>Inwestowanie długoterminowe.</dd>\n</dl>\n<h3>Specyficzne dla Bybit/Binance</h3>\n<dl>\n<dt id=\"funding-rate\">Funding Rate</dt><dd>Mechanizm wyrównujący cenę perpetuals do spotu.</dd>\n<dt id=\"margin\">Margin</dt><dd>Kapitał zabezpieczający pozycję.</dd>\n<dt id=\"pnl\">PnL</dt><dd>Zysk/strata (realized/unrealized).</dd>\n<dt id=\"liquidation\">Liquidation</dt><dd>Przymusowe zamknięcie pozycji przy braku marginu.</dd>\n</dl>"
+      }
+    }
+  ]
+}

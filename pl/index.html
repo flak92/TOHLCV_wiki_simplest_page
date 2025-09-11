@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Wiki Botów Tradingowych</title>
+<link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+<input type="checkbox" id="theme-toggle">
+<div class="wrapper">
+<nav class="sidebar">
+<div class="top-bar">
+  <details class="language">
+    <summary>PL</summary>
+    <a href="../index.html">EN</a>
+    <a href="index.html">PL</a>
+  </details>
+  <label for="theme-toggle" class="theme-switch"></label>
+</div>
+<ul>
+<li><a href="#home">Strona główna</a></li>
+<li><a href="#intro">Wprowadzenie</a></li>
+<li><a href="#ml-vs-hardcoded">ML vs Hardcoded</a></li>
+<li><a href="#strategy-comparisons">Porównania Strategii</a></li>
+<li><a href="#indicators">Wskaźniki</a></li>
+<li><a href="#how-to-deploy">Jak Wdrożyć</a></li>
+<li><a href="#glossary">Glosariusz</a></li>
+</ul>
+</nav>
+<main class="content">
+<section id="home"><h2>Wiki Botów Tradingowych</h2><p>Witamy w zbiorze surowych notatek o botach handlowych, kalibracji modeli ML i automatyzacji. Zacznij od <a href="#intro">Wprowadzenia</a>. Kluczowe pojęcia znajdziesz w <a href="#glossary">Glosariuszu</a>.</p></section>
+<section id="intro"><h2>Wprowadzenie</h2><p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href="#indicators">Wskaźniki</a>.</p></section>
+<section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Różnice między modelami opartymi na danych a botami o stałych regułach. Porównaj podejścia w <a href="#strategy-comparisons">Porównaniach Strategii</a>.</p></section>
+<section id="strategy-comparisons"><h2>Porównania Strategii</h2><p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href="#indicators">Wskaźnikach</a>.</p></section>
+<section id="indicators"><h2>Wskaźniki</h2><p>Uwagi terminologiczne: wskaźnik vs indykator vs oscylator. Wróć do podstaw w <a href="#intro">Wprowadzeniu</a>.</p></section>
+<section id="how-to-deploy"><h2>Jak Wdrożyć</h2><p>Kroki potrzebne do przygotowania i uruchomienia bota tradingowego. Przed wdrożeniem przejrzyj <a href="#strategy-comparisons">Porównania Strategii</a>.</p></section>
+<section id="glossary"><h2>Glosariusz</h2><h3>Podstawowe wskaźniki i metryki</h3>
+<dl>
+<dt id="rsi">RSI</dt><dd>Oscylator mierzący siłę trendu (wykupienie/wyprzedanie).</dd>
+<dt id="macd">MACD</dt><dd>Wskaźnik oparty na średnich ruchomych do oceny momentum.</dd>
+<dt id="sma">SMA</dt><dd>Prosta średnia ruchoma.</dd>
+<dt id="ema">EMA</dt><dd>Wykładnicza średnia ruchoma, większy nacisk na świeże ceny.</dd>
+<dt id="ma">MA</dt><dd>Uogólniona średnia ruchoma, zobacz <a href="#sma">SMA</a> lub <a href="#ema">EMA</a>.</dd>
+<dt id="cagr">CAGR</dt><dd>Średnioroczna stopa zwrotu skumulowana.</dd>
+<dt id="sharpe">Sharpe Ratio</dt><dd>Miara zysku względem ryzyka.</dd>
+<dt id="sortino">Sortino Ratio</dt><dd>Odmiana <a href="#sharpe">Sharpe'a</a> uwzględniająca tylko ryzyko spadków.</dd>
+<dt id="maxdd">Max Drawdown</dt><dd>Maksymalne obsunięcie kapitału.</dd>
+</dl>
+<h3>Risk & Money Management</h3>
+<dl>
+<dt id="kelly">Kelly Sizing</dt><dd>Optymalny sizing pozycji według prawdopodobieństwa wygranej.</dd>
+<dt id="stop-loss">Stop Loss</dt><dd>Zlecenie ograniczające stratę.</dd>
+<dt id="trailing-stop">Trailing Stop</dt><dd>Stop loss przesuwający się wraz z ceną.</dd>
+<dt id="take-profit">Take Profit</dt><dd>Automatyczne zamknięcie pozycji na zysku.</dd>
+<dt id="trailing-take-profit">Trailing Take Profit</dt><dd>Take profit podążający za rosnącą ceną.</dd>
+<dt id="leverage">Leverage</dt><dd>Dźwignia finansowa.</dd>
+<dt id="martingale">Martingale</dt><dd>Strategia podwajania stawki po stracie.</dd>
+<dt id="delta-neutral">Delta Neutral</dt><dd>Strategia równoważąca ekspozycję <a href="#long-position">long</a>/<a href="#short-position">short</a>.</dd>
+<dt id="hedging">Hedging</dt><dd>Zabezpieczenie ryzyka poprzez pozycje kompensujące.</dd>
+</dl>
+<h3>Instrumenty & Rynki</h3>
+<dl>
+<dt id="spot">Rynek Spot</dt><dd>Natychmiastowa wymiana aktywów.</dd>
+<dt id="perpetuals">Kontrakty Perpetual</dt><dd>Kontrakty bez daty wygaśnięcia powiązane <a href="#funding-rate">fundingiem</a>.</dd>
+<dt id="options">Opcje</dt><dd>Prawo do kupna/sprzedaży w przyszłości.</dd>
+<dt id="etfs">ETF</dt><dd>Fundusze notowane na giełdzie.</dd>
+<dt id="long-position">Pozycja Long</dt><dd>Zakład na wzrost ceny.</dd>
+<dt id="short-position">Pozycja Short</dt><dd>Zakład na spadek ceny.</dd>
+</dl>
+<h3>Kwant i ML w tradingu</h3>
+<dl>
+<dt id="ohlcv">OHLCV</dt><dd>Dane świecowe: open, high, low, close, volume.</dd>
+<dt id="lstm">LSTM</dt><dd>Rekurencyjna sieć do sekwencji czasowych.</dd>
+<dt id="random-forest">Random Forest</dt><dd>Metoda ensemble z drzew decyzyjnych.</dd>
+<dt id="xgboost">XGBoost</dt><dd>Gradient boosting dla danych finansowych.</dd>
+<dt id="footprint">Footprint / CVD</dt><dd>Analiza wolumenu i przepływu zleceń.</dd>
+</dl>
+<h3>Style i strategie handlu</h3>
+<dl>
+<dt id="scalping">Scalping</dt><dd>Szybkie wejścia/wyjścia, małe zyski, wysoka częstotliwość.</dd>
+<dt id="swing-trading">Swing Trading</dt><dd>Trzymanie pozycji od dni do tygodni.</dd>
+<dt id="day-trading">Day Trading</dt><dd>Zamykanie pozycji w ciągu dnia.</dd>
+<dt id="position-trading">Position Trading</dt><dd>Inwestowanie długoterminowe.</dd>
+</dl>
+<h3>Specyficzne dla Bybit/Binance</h3>
+<dl>
+<dt id="funding-rate">Funding Rate</dt><dd>Mechanizm wyrównujący cenę perpetuals do spotu.</dd>
+<dt id="margin">Margin</dt><dd>Kapitał zabezpieczający pozycję.</dd>
+<dt id="pnl">PnL</dt><dd>Zysk/strata (realized/unrealized).</dd>
+<dt id="liquidation">Liquidation</dt><dd>Przymusowe zamknięcie pozycji przy braku marginu.</dd>
+</dl></section>
+<footer><p>Ostatnia aktualizacja: 2024</p></footer>
+</main>
+</div>
+</body>
+</html>
