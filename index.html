@@ -92,25 +92,61 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const tagMap = {};
-  document.querySelectorAll('.content dl dt').forEach(dt => {
-    const id = dt.id;
-    const dd = dt.nextElementSibling;
-    const tagSpan = dd.querySelector('.tags');
-    if (tagSpan) {
-      const tags = tagSpan.textContent.trim().split(/\s+/).map(t => t.replace('#',''));
-      tagSpan.innerHTML = '';
-      tags.forEach((tag, idx) => {
-        const a = document.createElement('a');
-        a.href = '#tag-' + tag;
-        a.textContent = '#' + tag;
-        a.className = 'tag';
-        tagSpan.appendChild(a);
-        if (idx < tags.length - 1) tagSpan.append(' ');
-        if (!tagMap[tag]) tagMap[tag] = [];
-        tagMap[tag].push(id);
-      });
-    }
+  document.querySelectorAll('#glossary dl').forEach(dl => {
+    const container = document.createElement('div');
+    container.className = 'glossary-cards';
+    dl.parentNode.insertBefore(container, dl);
+    dl.querySelectorAll('dt').forEach(dt => {
+      const dd = dt.nextElementSibling;
+      const card = document.createElement('div');
+      card.className = 'glossary-card';
+      card.id = dt.id;
+
+      const title = document.createElement('h4');
+      title.textContent = dt.textContent;
+      card.appendChild(title);
+
+      const ddClone = dd.cloneNode(true);
+      const tagSpan = ddClone.querySelector('.tags');
+      if (tagSpan) tagSpan.remove();
+      const codeSpan = ddClone.querySelector('.code');
+      if (codeSpan) codeSpan.remove();
+      ddClone.querySelectorAll('br').forEach(br => br.remove());
+      const defP = document.createElement('p');
+      defP.innerHTML = ddClone.innerHTML.trim();
+      card.appendChild(defP);
+
+      const originalTagSpan = dd.querySelector('.tags');
+      if (originalTagSpan) {
+        const tagDiv = document.createElement('div');
+        tagDiv.className = 'tags';
+        const tags = originalTagSpan.textContent.trim().split(/\s+/).map(t => t.replace('#',''));
+        tags.forEach((tag, idx) => {
+          const a = document.createElement('a');
+          a.href = '#tag-' + tag;
+          a.textContent = '#' + tag;
+          a.className = 'tag';
+          tagDiv.appendChild(a);
+          if (idx < tags.length - 1) tagDiv.append(' ');
+          if (!tagMap[tag]) tagMap[tag] = [];
+          tagMap[tag].push(card.id);
+        });
+        card.appendChild(tagDiv);
+      }
+
+      const originalCodeSpan = dd.querySelector('.code');
+      if (originalCodeSpan) {
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'code';
+        codeDiv.textContent = originalCodeSpan.textContent.trim();
+        card.appendChild(codeDiv);
+      }
+
+      container.appendChild(card);
+    });
+    dl.remove();
   });
+
   const tagIndex = document.getElementById('tag-index');
   if (tagIndex) {
     const ul = document.createElement('ul');
