@@ -10,6 +10,53 @@ pages = config["pages"]
 
 Path("pl").mkdir(exist_ok=True)
 
+tag_script = r'''
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tagMap = {};
+  document.querySelectorAll('.content dl dt').forEach(dt => {
+    const id = dt.id;
+    const dd = dt.nextElementSibling;
+    const tagSpan = dd.querySelector('.tags');
+    if (tagSpan) {
+      const tags = tagSpan.textContent.trim().split(/\s+/).map(t => t.replace('#',''));
+      tagSpan.innerHTML = '';
+      tags.forEach((tag, idx) => {
+        const a = document.createElement('a');
+        a.href = '#tag-' + tag;
+        a.textContent = '#' + tag;
+        a.className = 'tag';
+        tagSpan.appendChild(a);
+        if (idx < tags.length - 1) tagSpan.append(' ');
+        if (!tagMap[tag]) tagMap[tag] = [];
+        tagMap[tag].push(id);
+      });
+    }
+  });
+  const tagIndex = document.getElementById('tag-index');
+  if (tagIndex) {
+    const ul = document.createElement('ul');
+    Object.keys(tagMap).sort().forEach(tag => {
+      const li = document.createElement('li');
+      li.id = 'tag-' + tag;
+      const strong = document.createElement('strong');
+      strong.textContent = '#' + tag + ': ';
+      li.appendChild(strong);
+      tagMap[tag].forEach((id, idx) => {
+        const link = document.createElement('a');
+        link.href = '#' + id;
+        link.textContent = id;
+        li.appendChild(link);
+        if (idx < tagMap[tag].length - 1) li.appendChild(document.createTextNode(', '));
+      });
+      ul.appendChild(li);
+    });
+    tagIndex.appendChild(ul);
+  }
+});
+</script>
+'''
+
 
 def build_lang_switch(lang):
     if lang == "en":
@@ -80,6 +127,7 @@ def build_index(lang):
 </main>
 </div>
 </div>
+{tag_script}
 </body>
 </html>"""
     Path(path).write_text(html)
