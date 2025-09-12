@@ -1,4 +1,4 @@
-A tiny collection of old-school static HTML pages for documenting Algorading Web App concepts.
+A tiny collection of old-school static HTML pages for documenting ML & Algotrading concepts.
 
 ## Structure
 
@@ -9,7 +9,7 @@ A tiny collection of old-school static HTML pages for documenting Algorading Web
 - `generate.py` – script that reads `site_config.json` and regenerates the index pages
 - Glossary section – cross‑linked terms grouped by indicators, risk management, instruments, ML, trading styles and exchange specifics
 
-All pages use plain HTML and CSS only. A dropdown in the menu lets you switch between English and Polish versions, and a checkbox toggles dark or light mode.
+All pages use plain HTML and CSS only. A dropdown in the menu lets you switch between English and Polish versions, a checkbox toggles dark or light mode, and glossary hashtags link to a tag index.
 
 ## Adding a definition
 

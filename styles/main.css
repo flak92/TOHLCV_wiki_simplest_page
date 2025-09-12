@@ -20,6 +20,7 @@ body {
     align-items: center;
     padding: 0.5em 1em;
     border-bottom: 1px solid #000;
+    background: #fafafa;
 }
 
 .controls {
@@ -114,6 +115,29 @@ body {
     color: #555;
 }
 
+.tags .tag {
+    display: inline-block;
+    background: #eef;
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    margin-right: 0.2em;
+    text-decoration: none;
+    color: #0645ad;
+}
+
+.tags .tag:hover {
+    background: #d0e6ff;
+}
+
+#tag-index ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#tag-index li {
+    margin-bottom: 0.5em;
+}
+
 footer {
     margin-top: 2em;
     border-top: 1px solid #ccc;
@@ -149,6 +173,7 @@ footer {
 
 #theme-toggle:checked + .wrapper .top-bar {
     border-bottom: 1px solid #555;
+    background: #1a1a1a;
 }
 
 @media (max-width: 600px) {
