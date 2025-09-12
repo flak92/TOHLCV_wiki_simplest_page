@@ -5,6 +5,7 @@ LANGS = ["en", "pl"]
 
 config = json.load(open("site_config.json"))
 site_title = config["site_title"]
+site_subtitle = config.get("site_subtitle", {})
 index_content = config["index_content"]
 pages = config["pages"]
 
@@ -27,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
       const title = document.createElement('h4');
       title.textContent = dt.textContent;
       card.appendChild(title);
+
+      const originalCodeSpan = dd.querySelector('.code');
+      if (originalCodeSpan) {
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'code';
+        codeDiv.textContent = originalCodeSpan.textContent.trim();
+        card.appendChild(codeDiv);
+      }
 
       const ddClone = dd.cloneNode(true);
       const tagSpan = ddClone.querySelector('.tags');
@@ -54,14 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
           tagMap[tag].push(card.id);
         });
         card.appendChild(tagDiv);
-      }
-
-      const originalCodeSpan = dd.querySelector('.code');
-      if (originalCodeSpan) {
-        const codeDiv = document.createElement('div');
-        codeDiv.className = 'code';
-        codeDiv.textContent = originalCodeSpan.textContent.trim();
-        card.appendChild(codeDiv);
       }
 
       container.appendChild(card);
@@ -124,7 +125,7 @@ def build_index(lang):
         )
     ]
     sections = [
-        f"<section id=\"home\"><h2>{site_title[lang]}</h2>{index_content[lang]}</section>"
+        f"<section id=\"home\"><h2>{site_title[lang]}</h2><blockquote class=\"site-subtitle\"><em>\"{site_subtitle.get(lang, site_subtitle.get('en', ''))}\"</em></blockquote>{index_content[lang]}</section>"
     ]
     for page in pages:
         menu_items.append(f"<li><a href=\"#{page['slug']}\">{page['title'][lang]}</a></li>")

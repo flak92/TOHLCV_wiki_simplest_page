@@ -33,7 +33,7 @@
 </ul>
 </nav>
 <main class="content">
-<section id="home"><h2>ML & Algotrading Wiki</h2><p>Welcome to a plain collection of notes on machine learning, algorithmic trading, and technical automation. Start with the <a href="#intro">Introduction</a> or jump to the <a href="#glossary">Glossary</a>.</p></section>
+<section id="home"><h2>ML & Algotrading Wiki</h2><blockquote class="site-subtitle"><em>"Longterm nobody can understand your Coded Object Oriented space relation desctriptions better than an AI-system, even you yourself"</em></blockquote><p>Welcome to a plain collection of notes on machine learning, algorithmic trading, and technical automation. Start with the <a href="#intro">Introduction</a> or jump to the <a href="#glossary">Glossary</a>.</p></section>
 <section id="intro"><h2>Introduction</h2><p>Overview of the project's purpose and how to navigate the pages. For terminology see <a href="#indicators">Indicators</a>.</p></section>
 <section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Distinction between data-driven models and apps built on fixed rule sets. Compare approaches in <a href="#strategy-comparisons">Strategy Comparisons</a>.</p></section>
 <section id="strategy-comparisons"><h2>Strategy Comparisons</h2><p>Notes on comparing simple trading strategies and calibration approaches. Learn more about building blocks in <a href="#indicators">Indicators</a>.</p></section>
@@ -77,7 +77,7 @@
 <dt id='swing'>Swing Trading</dt><dd>Holding positions for days or weeks. <span class='tags'>#style #swing</span><br><span class='code'>Coded as: SwingTrading</span></dd>
 <dt id='day-trading'>Day Trading</dt><dd>Closing positions within the day. <span class='tags'>#style #day</span><br><span class='code'>Coded as: DayTrading</span></dd>
 <dt id='position-trading'>Position Trading</dt><dd>Long-term investing. <span class='tags'>#style #position</span><br><span class='code'>Coded as: PositionTrading</span></dd>
-</dl><h3>Bybit/Binance Terms</h3><dl>
+</dl><h3>Exchange UI Terms</h3><dl>
 <dt id='funding'>Funding Rate</dt><dd>Payment aligning <a href='#perpetual'>perpetual futures</a> price with spot. <span class='tags'>#exchange #funding</span><br><span class='code'>Coded as: FundingRate</span></dd>
 <dt id='margin'>Margin</dt><dd>Collateral securing leveraged trades. <span class='tags'>#exchange #margin</span><br><span class='code'>Coded as: Margin</span></dd>
 <dt id='pnl'>PnL</dt><dd>Profit and loss, realized or unrealized. <span class='tags'>#exchange #pnl</span><br><span class='code'>Coded as: PnL</span></dd>
@@ -106,6 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
       title.textContent = dt.textContent;
       card.appendChild(title);
 
+      const originalCodeSpan = dd.querySelector('.code');
+      if (originalCodeSpan) {
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'code';
+        codeDiv.textContent = originalCodeSpan.textContent.trim();
+        card.appendChild(codeDiv);
+      }
+
       const ddClone = dd.cloneNode(true);
       const tagSpan = ddClone.querySelector('.tags');
       if (tagSpan) tagSpan.remove();
@@ -132,14 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
           tagMap[tag].push(card.id);
         });
         card.appendChild(tagDiv);
-      }
-
-      const originalCodeSpan = dd.querySelector('.code');
-      if (originalCodeSpan) {
-        const codeDiv = document.createElement('div');
-        codeDiv.className = 'code';
-        codeDiv.textContent = originalCodeSpan.textContent.trim();
-        card.appendChild(codeDiv);
       }
 
       container.appendChild(card);
