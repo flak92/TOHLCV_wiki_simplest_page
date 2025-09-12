@@ -108,8 +108,22 @@ body {
     margin-bottom: 0.5em;
 }
 
-.content dd .tags,
-.content dd .code {
+.glossary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.glossary-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    background: #fafafa;
+}
+
+.glossary-card .tags,
+.glossary-card .code {
     display: block;
     font-size: 0.9em;
     color: #555;
@@ -166,8 +180,13 @@ footer {
     content: 'Light';
 }
 
-#theme-toggle:checked + .wrapper .content dd .tags,
-#theme-toggle:checked + .wrapper .content dd .code {
+#theme-toggle:checked + .wrapper .glossary-card {
+    background: #2a2a2a;
+    border-color: #555;
+}
+
+#theme-toggle:checked + .wrapper .glossary-card .tags,
+#theme-toggle:checked + .wrapper .glossary-card .code {
     color: #bbb;
 }
 
