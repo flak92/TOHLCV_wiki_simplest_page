@@ -33,7 +33,7 @@
 </ul>
 </nav>
 <main class="content">
-<section id="home"><h2>ML & Algotrading Wiki</h2><p>Witamy w zbiorze surowych notatek o uczeniu maszynowym, algotradingu i automatyzacji technicznej. Zacznij od <a href="#intro">Wprowadzenia</a> lub przejdź do <a href="#glossary">Glosariusza</a>.</p></section>
+<section id="home"><h2>ML & Algotrading Wiki</h2><blockquote class="site-subtitle"><em>"Longterm nobody can understand your Coded Object Oriented space relation desctriptions better than an AI-system, even you yourself"</em></blockquote><p>Witamy w zbiorze surowych notatek o uczeniu maszynowym, algotradingu i automatyzacji technicznej. Zacznij od <a href="#intro">Wprowadzenia</a> lub przejdź do <a href="#glossary">Glosariusza</a>.</p></section>
 <section id="intro"><h2>Wprowadzenie</h2><p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href="#indicators">Wskaźniki</a>.</p></section>
 <section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Różnice między modelami opartymi na danych a aplikacjami o stałych regułach. Porównaj podejścia w <a href="#strategy-comparisons">Porównaniach Strategii</a>.</p></section>
 <section id="strategy-comparisons"><h2>Porównania Strategii</h2><p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href="#indicators">Wskaźnikach</a>.</p></section>
@@ -77,7 +77,7 @@
 <dt id='swing'>Swing Trading</dt><dd>Przetrzymywanie pozycji od dni do tygodni. <span class='tags'>#style #swing</span><br><span class='code'>Coded as: SwingTrading</span></dd>
 <dt id='day-trading'>Day Trading</dt><dd>Zamykanie pozycji w ciągu dnia. <span class='tags'>#style #day</span><br><span class='code'>Coded as: DayTrading</span></dd>
 <dt id='position-trading'>Position Trading</dt><dd>Długoterminowe inwestowanie. <span class='tags'>#style #position</span><br><span class='code'>Coded as: PositionTrading</span></dd>
-</dl><h3>Terminy specyficzne dla Bybit/Binance</h3><dl>
+</dl><h3>Terminy specyficzne dla Trading UIs</h3><dl>
 <dt id='funding'>Funding Rate</dt><dd>Mechanizm wyrównujący cenę <a href='#perpetual'>perpetuals</a> do spotu. <span class='tags'>#exchange #funding</span><br><span class='code'>Coded as: FundingRate</span></dd>
 <dt id='margin'>Margin</dt><dd>Kapitał zabezpieczający pozycję. <span class='tags'>#exchange #margin</span><br><span class='code'>Coded as: Margin</span></dd>
 <dt id='pnl'>PnL</dt><dd>Zysk i strata (zrealizowana/niezrealizowana). <span class='tags'>#exchange #pnl</span><br><span class='code'>Coded as: PnL</span></dd>
@@ -106,6 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
       title.textContent = dt.textContent;
       card.appendChild(title);
 
+      const originalCodeSpan = dd.querySelector('.code');
+      if (originalCodeSpan) {
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'code';
+        codeDiv.textContent = originalCodeSpan.textContent.trim();
+        card.appendChild(codeDiv);
+      }
+
       const ddClone = dd.cloneNode(true);
       const tagSpan = ddClone.querySelector('.tags');
       if (tagSpan) tagSpan.remove();
@@ -132,14 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
           tagMap[tag].push(card.id);
         });
         card.appendChild(tagDiv);
-      }
-
-      const originalCodeSpan = dd.querySelector('.code');
-      if (originalCodeSpan) {
-        const codeDiv = document.createElement('div');
-        codeDiv.className = 'code';
-        codeDiv.textContent = originalCodeSpan.textContent.trim();
-        card.appendChild(codeDiv);
       }
 
       container.appendChild(card);
