@@ -1,4 +1,4 @@
-A tiny collection of old-school static HTML pages for documenting trading bot concepts.
+A tiny collection of old-school static HTML pages for documenting Algorading Web App concepts.
 
 ## Structure
 

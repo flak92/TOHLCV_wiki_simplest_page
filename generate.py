@@ -14,19 +14,19 @@ Path("pl").mkdir(exist_ok=True)
 def build_lang_switch(lang):
     if lang == "en":
         return (
-            "  <details class=\"language\">\n"
-            "    <summary>EN</summary>\n"
-            "    <a href=\"index.html\">EN</a>\n"
-            "    <a href=\"pl/index.html\">PL</a>\n"
-            "  </details>"
+            "<details class=\"language\">\n"
+            "  <summary>EN</summary>\n"
+            "  <a href=\"index.html\">EN</a>\n"
+            "  <a href=\"pl/index.html\">PL</a>\n"
+            "</details>"
         )
     else:
         return (
-            "  <details class=\"language\">\n"
-            "    <summary>PL</summary>\n"
-            "    <a href=\"../index.html\">EN</a>\n"
-            "    <a href=\"index.html\">PL</a>\n"
-            "  </details>"
+            "<details class=\"language\">\n"
+            "  <summary>PL</summary>\n"
+            "  <a href=\"../index.html\">EN</a>\n"
+            "  <a href=\"index.html\">PL</a>\n"
+            "</details>"
         )
 
 
@@ -61,11 +61,15 @@ def build_index(lang):
 <body>
 <input type=\"checkbox\" id=\"theme-toggle\">
 <div class=\"wrapper\">
-<nav class=\"sidebar\">
-<div class=\"top-bar\">
+<header class=\"top-bar\">
+  <h1 class=\"site-title\"><a href=\"#home\">{site_title[lang]}</a></h1>
+  <div class=\"controls\">
 {switch}
-  <label for=\"theme-toggle\" class=\"theme-switch\"></label>
-</div>
+    <label for=\"theme-toggle\" class=\"theme-switch\"></label>
+  </div>
+</header>
+<div class=\"main\">
+<nav class=\"sidebar\">
 <ul>
 {menu_html}
 </ul>
@@ -74,6 +78,7 @@ def build_index(lang):
 {sections_html}
 <footer><p>{footer_text}</p></footer>
 </main>
+</div>
 </div>
 </body>
 </html>"""
