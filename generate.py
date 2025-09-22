@@ -1,4 +1,5 @@
 import json
+import textwrap
 from pathlib import Path
 
 LANGS = ["en", "pl"]
@@ -7,6 +8,17 @@ config = json.load(open("site_config.json"))
 site_title = config["site_title"]
 index_content = config["index_content"]
 pages = config["pages"]
+glossary_sections = config["glossary_sections"]
+
+CODE_LABELS = {
+    "en": "Coded as: ",
+    "pl": "Kod w systemie: ",
+}
+
+COMMENT_LABELS = {
+    "en": {"section": "SECTION", "definition": "DEFINITION"},
+    "pl": {"section": "SEKCJA", "definition": "DEFINICJA"},
+}
 
 Path("pl").mkdir(exist_ok=True)
 
@@ -94,6 +106,46 @@ document.addEventListener('DOMContentLoaded', function() {
 '''
 
 
+def comment_box(text, symbol="#", indent=""):
+    border = symbol * (len(text) + 10)
+    middle = f"{symbol * 4} {text} {symbol * 4}"
+    return [f"{indent}<!-- {border} -->", f"{indent}<!-- {middle} -->", f"{indent}<!-- {border} -->"]
+
+
+def build_glossary_html(lang):
+    lines = []
+    labels = COMMENT_LABELS.get(lang, COMMENT_LABELS["en"])
+    code_label = CODE_LABELS.get(lang, CODE_LABELS["en"])
+    for section in glossary_sections:
+        title = section["title"][lang]
+        lines.append("")
+        lines.extend(comment_box(f"{labels['section']}: {title}", "#"))
+        lines.append(f"<div class='glossary-section' data-section='{section['slug']}'>")
+        lines.append(f"  <h3>{title}</h3>")
+        lines.append("  <dl>")
+        for index, item in enumerate(section["items"], start=1):
+            item_title = item["label"][lang]
+            definition_label = f"{labels['definition']} {index:02d}: {item_title}"
+            lines.extend([f"  {line}" for line in comment_box(definition_label, "-")])
+            lines.append(f"  <dt id='{item['id']}'>{item_title}</dt>")
+            description = item["description"][lang]
+            tags = item.get("tags", [])
+            tags_html = ""
+            if tags:
+                tags_html = " <span class='tags'>" + " ".join(f"#{tag}" for tag in tags) + "</span>"
+            code_value = item.get("code", "").strip()
+            code_html = ""
+            if code_value:
+                code_html = f"<br><span class='code'>{code_label}{code_value}</span>"
+            lines.append(f"  <dd>{description}{tags_html}{code_html}</dd>")
+            closing_label = f"END {labels['definition']} {index:02d}"
+            lines.extend([f"  {line}" for line in comment_box(closing_label, "~")])
+            lines.append("")
+        lines.append("  </dl>")
+        lines.append("</div>")
+    return "\n".join(lines)
+
+
 def build_lang_switch(lang):
     if lang == "en":
         return (
@@ -113,26 +165,44 @@ def build_lang_switch(lang):
         )
 
 
+def normalize_fragment(fragment, indent="  "):
+    stripped = fragment.strip()
+    if not stripped:
+        return []
+    dedented = textwrap.dedent(stripped)
+    return [f"{indent}{line.rstrip()}" for line in dedented.splitlines()]
+
+
 def build_index(lang):
     path = "index.html" if lang == "en" else "pl/index.html"
     css_path = "styles/main.css" if lang == "en" else "../styles/main.css"
     footer_text = "Last updated: 2024" if lang == "en" else "Ostatnia aktualizacja: 2024"
-    menu_items = [
-        (
-            "<li><a href=\"#home\">Home</a></li>" if lang == "en" else
-            "<li><a href=\"#home\">Strona główna</a></li>"
-        )
-    ]
+    home_label = "Home" if lang == "en" else "Strona główna"
+    menu_items = [f"<li><a href=\"#home\">{home_label}</a></li>"]
     sections = [
-        f"<section id=\"home\"><h2>{site_title[lang]}</h2>{index_content[lang]}</section>"
+        "\n".join(
+            [
+                "<section id=\"home\">",
+                f"  <h2>{site_title[lang]}</h2>",
+                *normalize_fragment(index_content[lang]),
+                "</section>",
+            ]
+        )
     ]
     for page in pages:
         menu_items.append(f"<li><a href=\"#{page['slug']}\">{page['title'][lang]}</a></li>")
-        sections.append(
-            f"<section id=\"{page['slug']}\"><h2>{page['title'][lang]}</h2>{page['content'][lang]}</section>"
-        )
-    menu_html = "\n".join(menu_items)
-    sections_html = "\n".join(sections)
+        content_html = page["content"][lang]
+        if page["slug"] == "glossary":
+            content_html = content_html + "\n" + build_glossary_html(lang)
+        section_lines = [
+            f"<section id=\"{page['slug']}\">",
+            f"  <h2>{page['title'][lang]}</h2>",
+            *normalize_fragment(content_html),
+            "</section>",
+        ]
+        sections.append("\n".join(section_lines))
+    menu_html = "\n".join(f"  {item}" for item in menu_items)
+    sections_html = "\n\n".join(sections)
     switch = build_lang_switch(lang)
     html = f"""<!DOCTYPE html>
 <html lang=\"{lang}\">
