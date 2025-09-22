@@ -1,26 +1,26 @@
 {
   "site_title": {
-    "en": "ML, Trading & Algotrading Wiki",
-    "pl": "ML, Trading & Algotrading Wiki"
+    "en": "ML, Trading, Algotrading & Programming Wiki",
+    "pl": "ML, Trading, Algotrading & Programming Wiki"
   },
   "site_subtitle": {
-    "en": "Longterm nobody can understand your Coded Object Oriented space relation desctriptions better than an AI-system, even you yourself",
-    "pl": "Longterm nobody can understand your Coded Object Oriented space relation desctriptions better than an AI-system, even you yourself"
+    "en": "Longterm nobody can understand your Coded Object Oriented timespace relations desctriptions better than an AI-system, even you yourself",
+    "pl": "Longterm nobody can understand your Coded Object Oriented timespace relations desctriptions better than an AI-system, even you yourself"
   },
   "index_content": {
-    "en": "<p>Collection of notes on machine learning, Trading, algotading and Progtamming. Start here:<a href=\"#intro\">Subjects</a> or discover the definitions to make understanding during reading more optimised:<a href=\"#glossary\">Definitions</a>.</p>",
-    "pl": "<p>Zbiór notatek o Machine Learning, Trading, algotrading i programing, Spis Treści:<a href=\"#intro\">Subjects</a> lub <a href=\"#glossary\">Definitions</a>.</p>"
+    "en": "<p>Collection of notes about machine learning, Trading, algotading and Progtamming. Start here:<a href=\"#intro\">Subjects</a> or discover the definitions to make understanding during reading more efficent:<a href=\"#glossary\">Definitions</a>.</p>",
+    "pl": "<p>Zbiór notatek o Machine Learning, Trading, algotrading i programing, Spis Treści:<a href=\"#intro\">Subjects</a> lub poznaj definicje, by więcej rozumieć czytając<a href=\"#glossary\">Definitions</a>.</p>"
   },
   "pages": [
     {
       "slug": "intro",
       "title": {
-        "en": "Introduction",
-        "pl": "Wprowadzenie"
+        "en": "Entry-Page",
+        "pl": "Strona Główna"
       },
       "content": {
-        "en": "<p>Overview of the project's purpose and how to navigate the pages. For terminology see <a href=\"#indicators\">Indicators</a>.</p>",
-        "pl": "<p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href=\"#indicators\">Wskaźniki</a>.</p>"
+        "en": "<p>Pages purpose Overview and how to navigate through pages. For terminology see <a href=\"#glossary\">Definitions</a>.</p>",
+        "pl": "<p>Opis Strony i jak się poruszać poprzez podstrony. Efektywniej jest jeżeli umiesz w Obiekty, bo gadanie to dopasowywanie algorytmów w  Embeddingach, ktróe składają zdania lub LowerOrUpperCamelCase'y<a href=\"#glossary\">Definitions</a>.</p>"
       }
     },
     {
