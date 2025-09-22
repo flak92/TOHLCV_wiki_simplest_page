@@ -1,7 +1,7 @@
 {
   "site_title": {
-    "en": "ML & Algotrading Wiki",
-    "pl": "ML & Algotrading Wiki"
+    "en": "ML, Trading & Algotrading Wiki",
+    "pl": "ML, Trading & Algotrading Wiki"
   },
   "index_content": {
     "en": "<p>Welcome to a plain collection of notes on machine learning, algorithmic trading, and technical automation. Start with the <a href=\"#intro\">Introduction</a> or jump to the <a href=\"#glossary\">Glossary</a>.</p>",
