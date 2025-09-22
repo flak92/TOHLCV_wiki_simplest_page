@@ -5,7 +5,7 @@
   },
   "index_content": {
     "en": "<p>Welcome to a plain collection of notes on machine learning, algorithmic trading, and technical automation. Start with the <a href=\"#intro\">Introduction</a> or jump to the <a href=\"#glossary\">Glossary</a>.</p>",
-    "pl": "<p>Witamy w zbiorze surowych notatek o uczeniu maszynowym, algotradingu i automatyzacji technicznej. Zacznij od <a href=\"#intro\">Wprowadzenia</a> lub przejdź do <a href=\"#glossary\">Glosariusza</a>.</p>"
+    "pl": "<p>Zbiór notatek o Machine Learning, Trading, algotrading i programing, Spis Treści:<a href=\"#intro\">Subjects</a> lub <a href=\"#glossary\">Definitions</a>.</p>"
   },
   "pages": [
     {
