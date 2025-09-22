@@ -1,3 +1,12 @@
+!!!NOT TO USE !!!!, 
+I DONT MAKE PRIVATE CUZ YOU CAN NOT CHANGE MANY TIMES BEETWEN PUBLIC & PRIVATE REPO AND IDK WHAT IT WILL BE IN FUTURE
+!!!!!!!
+
+
+
+
+
+
 A tiny collection of old-school static HTML pages for documenting ML & Algotrading concepts.
 
 ## Structure
