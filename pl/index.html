@@ -2,14 +2,14 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>ML & Algotrading Wiki</title>
+<title>ML, Trading & Algotrading Wiki</title>
 <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 <input type="checkbox" id="theme-toggle">
 <div class="wrapper">
 <header class="top-bar">
-  <h1 class="site-title"><a href="#home">ML & Algotrading Wiki</a></h1>
+  <h1 class="site-title"><a href="#home">ML, Trading & Algotrading Wiki</a></h1>
   <div class="controls">
 <details class="language">
   <summary>PL</summary>
@@ -22,68 +22,445 @@
 <div class="main">
 <nav class="sidebar">
 <ul>
-<li><a href="#home">Strona główna</a></li>
-<li><a href="#intro">Wprowadzenie</a></li>
-<li><a href="#ml-vs-hardcoded">ML vs Hardcoded</a></li>
-<li><a href="#strategy-comparisons">Porównania Strategii</a></li>
-<li><a href="#indicators">Wskaźniki</a></li>
-<li><a href="#how-to-deploy">Jak Wdrożyć</a></li>
-<li><a href="#glossary">Glosariusz</a></li>
-<li><a href="#tags">Tagi</a></li>
+  <li><a href="#home">Strona główna</a></li>
+  <li><a href="#intro">Wprowadzenie</a></li>
+  <li><a href="#ml-vs-hardcoded">ML vs Hardcoded</a></li>
+  <li><a href="#strategy-comparisons">Porównania Strategii</a></li>
+  <li><a href="#indicators">Wskaźniki</a></li>
+  <li><a href="#how-to-deploy">Jak Wdrożyć</a></li>
+  <li><a href="#glossary">Glosariusz</a></li>
+  <li><a href="#tags">Tagi</a></li>
 </ul>
 </nav>
 <main class="content">
-<section id="home"><h2>ML & Algotrading Wiki</h2><blockquote class="site-subtitle"><em>"Longterm nobody can understand your Coded Object Oriented space relation desctriptions better than an AI-system, even you yourself"</em></blockquote><p>Witamy w zbiorze surowych notatek o uczeniu maszynowym, algotradingu i automatyzacji technicznej. Zacznij od <a href="#intro">Wprowadzenia</a> lub przejdź do <a href="#glossary">Glosariusza</a>.</p></section>
-<section id="intro"><h2>Wprowadzenie</h2><p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href="#indicators">Wskaźniki</a>.</p></section>
-<section id="ml-vs-hardcoded"><h2>ML vs Hardcoded</h2><p>Różnice między modelami opartymi na danych a aplikacjami o stałych regułach. Porównaj podejścia w <a href="#strategy-comparisons">Porównaniach Strategii</a>.</p></section>
-<section id="strategy-comparisons"><h2>Porównania Strategii</h2><p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href="#indicators">Wskaźnikach</a>.</p></section>
-<section id="indicators"><h2>Wskaźniki</h2><p>Uwagi terminologiczne: wskaźnik vs indykator vs oscylator. Wróć do podstaw w <a href="#intro">Wprowadzeniu</a>.</p></section>
-<section id="how-to-deploy"><h2>Jak Wdrożyć</h2><p>Kroki potrzebne do przygotowania i uruchomienia Algorading Web App. Przed wdrożeniem przejrzyj <a href="#strategy-comparisons">Porównania Strategii</a>.</p></section>
-<section id="glossary"><h2>Glosariusz</h2><h3>Podstawowe wskaźniki i metryki</h3><dl>
-<dt id='rsi'>RSI</dt><dd>Oscylator mierzący siłę trendu (wykupienie/wyprzedanie). <span class='tags'>#indicator #oscillator</span><br><span class='code'>Coded as: RSI</span></dd>
-<dt id='macd'>MACD</dt><dd>Wskaźnik oparty na różnicy <a href='#ma'>MA</a>. <span class='tags'>#indicator #trend</span><br><span class='code'>Coded as: MACD</span></dd>
-<dt id='sma'>SMA</dt><dd>Prosta średnia ruchoma, forma <a href='#ma'>MA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Coded as: SMA</span></dd>
-<dt id='ema'>EMA</dt><dd>Wykładnicza średnia ruchoma, ważona <a href='#ma'>MA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Coded as: EMA</span></dd>
-<dt id='ma'>MA</dt><dd>Uogólniona średnia ruchoma; baza dla <a href='#macd'>MACD</a> i <a href='#sma'>SMA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Coded as: MA</span></dd>
-<dt id='cagr'>CAGR</dt><dd>Skumulowana średnioroczna stopa zwrotu. <span class='tags'>#metric #return</span><br><span class='code'>Coded as: CAGR</span></dd>
-<dt id='sharpe'>Sharpe Ratio</dt><dd>Miara zysku względem ryzyka zmienności. <span class='tags'>#metric #risk</span><br><span class='code'>Coded as: SharpeRatio</span></dd>
-<dt id='sortino'>Sortino Ratio</dt><dd>Wariant Sharpe'a uwzględniający tylko ryzyko spadków. <span class='tags'>#metric #risk</span><br><span class='code'>Coded as: SortinoRatio</span></dd>
-<dt id='maxdd'>Max Drawdown</dt><dd>Maksymalne obsunięcie kapitału. <span class='tags'>#metric #risk</span><br><span class='code'>Coded as: MaxDrawdown</span></dd>
-</dl><h3>Zarządzanie ryzykiem i kapitałem</h3><dl>
-<dt id='kelly'>Kelly Sizing</dt><dd>Optymalny dobór wielkości pozycji. <span class='tags'>#risk #position-sizing</span><br><span class='code'>Coded as: KellySizing</span></dd>
-<dt id='stop-loss'>Stop Loss</dt><dd>Zlecenie ograniczające stratę; zobacz <a href='#trailing-stop'>Trailing Stop</a>. <span class='tags'>#risk #order</span><br><span class='code'>Coded as: StopLossMain</span></dd>
-<dt id='trailing-stop'>Trailing Stop</dt><dd>Stop loss przesuwający się z ceną. <span class='tags'>#risk #order</span><br><span class='code'>Coded as: TrailingStop</span></dd>
-<dt id='take-profit'>Take Profit</dt><dd>Automatyczne zamknięcie pozycji na zysku. <span class='tags'>#risk #order</span><br><span class='code'>Coded as: TakeProfit</span></dd>
-<dt id='trailing-take-profit'>Trailing Take Profit</dt><dd>Take profit podążający za ceną. <span class='tags'>#risk #order</span><br><span class='code'>Coded as: TrailingTakeProfit</span></dd>
-<dt id='leverage'>Leverage</dt><dd>Dźwignia finansowa. <span class='tags'>#risk #leverage</span><br><span class='code'>Coded as: Leverage</span></dd>
-<dt id='martingale'>Martingale</dt><dd>Strategia podwajania stawki po stracie. <span class='tags'>#risk #strategy</span><br><span class='code'>Coded as: Martingale</span></dd>
-<dt id='delta-neutral'>Delta Neutral</dt><dd>Pozycja zabezpieczona przed ruchem kierunkowym. <span class='tags'>#risk #hedging</span><br><span class='code'>Coded as: DeltaNeutral</span></dd>
-<dt id='hedging'>Hedging</dt><dd>Zabezpieczenie ryzyka poprzez pozycje kompensujące. <span class='tags'>#risk #hedging</span><br><span class='code'>Coded as: Hedging</span></dd>
-</dl><h3>Instrumenty i rynki</h3><dl>
-<dt id='spot'>Rynek Spot</dt><dd>Natychmiastowa wymiana aktywów. <span class='tags'>#market #spot</span><br><span class='code'>Coded as: SpotMarket</span></dd>
-<dt id='perpetual'>Kontrakty Perpetual</dt><dd>Futures bez wygaśnięcia, powiązane z <a href='#funding'>fundingiem</a>. <span class='tags'>#market #futures</span><br><span class='code'>Coded as: PerpetualFutures</span></dd>
-<dt id='options'>Opcje</dt><dd>Prawo do kupna lub sprzedaży w przyszłości. <span class='tags'>#market #derivatives</span><br><span class='code'>Coded as: Options</span></dd>
-<dt id='etfs'>ETF-y</dt><dd>Fundusze notowane na giełdzie. <span class='tags'>#market #etf</span><br><span class='code'>Coded as: ETFs</span></dd>
-<dt id='long'>Pozycja Long</dt><dd>Zakład na wzrost ceny. <span class='tags'>#position #long</span><br><span class='code'>Coded as: LongPosition</span></dd>
-<dt id='short'>Pozycja Short</dt><dd>Zakład na spadek ceny. <span class='tags'>#position #short</span><br><span class='code'>Coded as: ShortPosition</span></dd>
-</dl><h3>Kwant i ML w tradingu</h3><dl>
-<dt id='ohlcv'>OHLCV</dt><dd>Dane świecowe: otwarcie, maksimum, minimum, zamknięcie, wolumen. <span class='tags'>#data #ohlcv</span><br><span class='code'>Coded as: OHLCV</span></dd>
-<dt id='lstm'>LSTM</dt><dd>Rekurencyjna sieć dla sekwencji czasowych. <span class='tags'>#ml #rnn</span><br><span class='code'>Coded as: LSTM</span></dd>
-<dt id='random-forest'>Random Forest</dt><dd>Metoda zespołowa drzew decyzyjnych. <span class='tags'>#ml #tree</span><br><span class='code'>Coded as: RandomForest</span></dd>
-<dt id='xgboost'>XGBoost</dt><dd>Boosting gradientowy dla danych finansowych. <span class='tags'>#ml #boosting</span><br><span class='code'>Coded as: XGBoost</span></dd>
-<dt id='footprint'>Footprint / CVD</dt><dd>Analiza wolumenu i przepływu zleceń. <span class='tags'>#data #volume</span><br><span class='code'>Coded as: FootprintCVD</span></dd>
-</dl><h3>Style handlu</h3><dl>
-<dt id='scalping'>Scalping</dt><dd>Szybkie transakcje na małych ruchach. <span class='tags'>#style #scalping</span><br><span class='code'>Coded as: Scalping</span></dd>
-<dt id='swing'>Swing Trading</dt><dd>Przetrzymywanie pozycji od dni do tygodni. <span class='tags'>#style #swing</span><br><span class='code'>Coded as: SwingTrading</span></dd>
-<dt id='day-trading'>Day Trading</dt><dd>Zamykanie pozycji w ciągu dnia. <span class='tags'>#style #day</span><br><span class='code'>Coded as: DayTrading</span></dd>
-<dt id='position-trading'>Position Trading</dt><dd>Długoterminowe inwestowanie. <span class='tags'>#style #position</span><br><span class='code'>Coded as: PositionTrading</span></dd>
-</dl><h3>Terminy specyficzne dla Trading UIs</h3><dl>
-<dt id='funding'>Funding Rate</dt><dd>Mechanizm wyrównujący cenę <a href='#perpetual'>perpetuals</a> do spotu. <span class='tags'>#exchange #funding</span><br><span class='code'>Coded as: FundingRate</span></dd>
-<dt id='margin'>Margin</dt><dd>Kapitał zabezpieczający pozycję. <span class='tags'>#exchange #margin</span><br><span class='code'>Coded as: Margin</span></dd>
-<dt id='pnl'>PnL</dt><dd>Zysk i strata (zrealizowana/niezrealizowana). <span class='tags'>#exchange #pnl</span><br><span class='code'>Coded as: PnL</span></dd>
-<dt id='liquidation'>Liquidacja</dt><dd>Przymusowe zamknięcie z powodu braku <a href='#margin'>marginu</a>. <span class='tags'>#exchange #liquidation</span><br><span class='code'>Coded as: Liquidation</span></dd>
-</dl></section>
-<section id="tags"><h2>Tagi</h2><div id='tag-index'></div></section>
+<section id="home">
+  <h2>ML, Trading & Algotrading Wiki</h2>
+  <p>Zbiór notatek o machine learningu, tradingu, algotradingu i programowaniu.
+    Spis treści: <a href="#intro">Tematy</a>
+    lub przejdź do definicji: <a href="#glossary">Definicje</a>.</p>
+</section>
+
+<section id="intro">
+  <h2>Wprowadzenie</h2>
+  <p>Ogólny opis celu projektu i jak poruszać się po stronach. Zobacz także <a href="#indicators">Wskaźniki</a>.</p>
+</section>
+
+<section id="ml-vs-hardcoded">
+  <h2>ML vs Hardcoded</h2>
+  <p>Różnice między modelami opartymi na danych a aplikacjami o stałych regułach. Porównaj podejścia w <a href="#strategy-comparisons">Porównaniach Strategii</a>.</p>
+</section>
+
+<section id="strategy-comparisons">
+  <h2>Porównania Strategii</h2>
+  <p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href="#indicators">Wskaźnikach</a>.</p>
+</section>
+
+<section id="indicators">
+  <h2>Wskaźniki</h2>
+  <p>Uwagi terminologiczne: wskaźnik vs indykator vs oscylator. Wróć do podstaw w <a href="#intro">Wprowadzeniu</a>.</p>
+</section>
+
+<section id="how-to-deploy">
+  <h2>Jak Wdrożyć</h2>
+  <p>Kroki potrzebne do przygotowania i uruchomienia Algorading Web App. Przed wdrożeniem przejrzyj <a href="#strategy-comparisons">Porównania Strategii</a>.</p>
+</section>
+
+<section id="glossary">
+  <h2>Glosariusz</h2>
+  <p>Definicje pogrupowane według sekcji. W źródle HTML znajdziesz ozdobne komentarze, które pomagają dopisywać nowe pojęcia.</p>
+  
+  <!-- ################################################ -->
+  <!-- #### SEKCJA: Podstawowe wskaźniki i metryki #### -->
+  <!-- ################################################ -->
+  <div class='glossary-section' data-section='basic-indicators-and-metrics'>
+    <h3>Podstawowe wskaźniki i metryki</h3>
+    <dl>
+    <!-- --------------------------- -->
+    <!-- ---- DEFINICJA 01: RSI ---- -->
+    <!-- --------------------------- -->
+    <dt id='rsi'>RSI</dt>
+    <dd>Oscylator mierzący siłę trendu (wykupienie/wyprzedanie). <span class='tags'>#indicator #oscillator</span><br><span class='code'>Kod w systemie: RSI</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------- -->
+    <!-- ---- DEFINICJA 02: MACD ---- -->
+    <!-- ---------------------------- -->
+    <dt id='macd'>MACD</dt>
+    <dd>Wskaźnik oparty na różnicy <a href="#ma">MA</a>. <span class='tags'>#indicator #trend</span><br><span class='code'>Kod w systemie: MACD</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- --------------------------- -->
+    <!-- ---- DEFINICJA 03: SMA ---- -->
+    <!-- --------------------------- -->
+    <dt id='sma'>SMA</dt>
+    <dd>Prosta średnia ruchoma, forma <a href="#ma">MA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Kod w systemie: SMA</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- --------------------------- -->
+    <!-- ---- DEFINICJA 04: EMA ---- -->
+    <!-- --------------------------- -->
+    <dt id='ema'>EMA</dt>
+    <dd>Wykładnicza średnia ruchoma, ważona <a href="#ma">MA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Kod w systemie: EMA</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- -------------------------- -->
+    <!-- ---- DEFINICJA 05: MA ---- -->
+    <!-- -------------------------- -->
+    <dt id='ma'>MA</dt>
+    <dd>Uogólniona średnia ruchoma; baza dla <a href="#macd">MACD</a> i <a href="#sma">SMA</a>. <span class='tags'>#indicator #average</span><br><span class='code'>Kod w systemie: MA</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 05 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------- -->
+    <!-- ---- DEFINICJA 06: CAGR ---- -->
+    <!-- ---------------------------- -->
+    <dt id='cagr'>CAGR</dt>
+    <dd>Skumulowana średnioroczna stopa zwrotu. <span class='tags'>#metric #return</span><br><span class='code'>Kod w systemie: CAGR</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 06 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------ -->
+    <!-- ---- DEFINICJA 07: Sharpe Ratio ---- -->
+    <!-- ------------------------------------ -->
+    <dt id='sharpe'>Sharpe Ratio</dt>
+    <dd>Miara zysku względem ryzyka zmienności. <span class='tags'>#metric #risk</span><br><span class='code'>Kod w systemie: SharpeRatio</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 07 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 08: Sortino Ratio ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='sortino'>Sortino Ratio</dt>
+    <dd>Wariant Sharpe'a uwzględniający tylko ryzyko spadków. <span class='tags'>#metric #risk</span><br><span class='code'>Kod w systemie: SortinoRatio</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 08 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------ -->
+    <!-- ---- DEFINICJA 09: Max Drawdown ---- -->
+    <!-- ------------------------------------ -->
+    <dt id='maxdd'>Max Drawdown</dt>
+    <dd>Maksymalne obsunięcie kapitału. <span class='tags'>#metric #risk</span><br><span class='code'>Kod w systemie: MaxDrawdown</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 09 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+  
+  <!-- ################################################## -->
+  <!-- #### SEKCJA: Zarządzanie ryzykiem i kapitałem #### -->
+  <!-- ################################################## -->
+  <div class='glossary-section' data-section='risk-money-management'>
+    <h3>Zarządzanie ryzykiem i kapitałem</h3>
+    <dl>
+    <!-- ------------------------------------ -->
+    <!-- ---- DEFINICJA 01: Kelly Sizing ---- -->
+    <!-- ------------------------------------ -->
+    <dt id='kelly'>Kelly Sizing</dt>
+    <dd>Optymalny dobór wielkości pozycji. <span class='tags'>#risk #position-sizing</span><br><span class='code'>Kod w systemie: KellySizing</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- --------------------------------- -->
+    <!-- ---- DEFINICJA 02: Stop Loss ---- -->
+    <!-- --------------------------------- -->
+    <dt id='stop-loss'>Stop Loss</dt>
+    <dd>Zlecenie ograniczające stratę; zobacz <a href="#trailing-stop">Trailing Stop</a>. <span class='tags'>#risk #order</span><br><span class='code'>Kod w systemie: StopLossMain</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 03: Trailing Stop ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='trailing-stop'>Trailing Stop</dt>
+    <dd>Stop loss przesuwający się z ceną. <span class='tags'>#risk #order</span><br><span class='code'>Kod w systemie: TrailingStop</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ----------------------------------- -->
+    <!-- ---- DEFINICJA 04: Take Profit ---- -->
+    <!-- ----------------------------------- -->
+    <dt id='take-profit'>Take Profit</dt>
+    <dd>Automatyczne zamknięcie pozycji na zysku. <span class='tags'>#risk #order</span><br><span class='code'>Kod w systemie: TakeProfit</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- -------------------------------------------- -->
+    <!-- ---- DEFINICJA 05: Trailing Take Profit ---- -->
+    <!-- -------------------------------------------- -->
+    <dt id='trailing-take-profit'>Trailing Take Profit</dt>
+    <dd>Take profit podążający za ceną. <span class='tags'>#risk #order</span><br><span class='code'>Kod w systemie: TrailingTakeProfit</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 05 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- -------------------------------- -->
+    <!-- ---- DEFINICJA 06: Leverage ---- -->
+    <!-- -------------------------------- -->
+    <dt id='leverage'>Leverage</dt>
+    <dd>Dźwignia finansowa. <span class='tags'>#risk #leverage</span><br><span class='code'>Kod w systemie: Leverage</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 06 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------------- -->
+    <!-- ---- DEFINICJA 07: Martingale ---- -->
+    <!-- ---------------------------------- -->
+    <dt id='martingale'>Martingale</dt>
+    <dd>Strategia podwajania stawki po stracie. <span class='tags'>#risk #strategy</span><br><span class='code'>Kod w systemie: Martingale</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 07 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 08: Delta Neutral ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='delta-neutral'>Delta Neutral</dt>
+    <dd>Pozycja zabezpieczona przed ruchem kierunkowym. <span class='tags'>#risk #hedging</span><br><span class='code'>Kod w systemie: DeltaNeutral</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 08 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------- -->
+    <!-- ---- DEFINICJA 09: Hedging ---- -->
+    <!-- ------------------------------- -->
+    <dt id='hedging'>Hedging</dt>
+    <dd>Zabezpieczenie ryzyka poprzez pozycje kompensujące. <span class='tags'>#risk #hedging</span><br><span class='code'>Kod w systemie: Hedging</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 09 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+  
+  <!-- ##################################### -->
+  <!-- #### SEKCJA: Instrumenty i rynki #### -->
+  <!-- ##################################### -->
+  <div class='glossary-section' data-section='instruments-markets'>
+    <h3>Instrumenty i rynki</h3>
+    <dl>
+    <!-- ---------------------------------- -->
+    <!-- ---- DEFINICJA 01: Rynek Spot ---- -->
+    <!-- ---------------------------------- -->
+    <dt id='spot'>Rynek Spot</dt>
+    <dd>Natychmiastowa wymiana aktywów. <span class='tags'>#market #spot</span><br><span class='code'>Kod w systemie: SpotMarket</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------------- -->
+    <!-- ---- DEFINICJA 02: Kontrakty Perpetual ---- -->
+    <!-- ------------------------------------------- -->
+    <dt id='perpetual'>Kontrakty Perpetual</dt>
+    <dd>Futures bez wygaśnięcia, powiązane z <a href="#funding">fundingiem</a>. <span class='tags'>#market #futures</span><br><span class='code'>Kod w systemie: PerpetualFutures</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ----------------------------- -->
+    <!-- ---- DEFINICJA 03: Opcje ---- -->
+    <!-- ----------------------------- -->
+    <dt id='options'>Opcje</dt>
+    <dd>Prawo do kupna lub sprzedaży w przyszłości. <span class='tags'>#market #derivatives</span><br><span class='code'>Kod w systemie: Options</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ----------------------------- -->
+    <!-- ---- DEFINICJA 04: ETF-y ---- -->
+    <!-- ----------------------------- -->
+    <dt id='etfs'>ETF-y</dt>
+    <dd>Fundusze notowane na giełdzie. <span class='tags'>#market #etf</span><br><span class='code'>Kod w systemie: ETFs</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------ -->
+    <!-- ---- DEFINICJA 05: Pozycja Long ---- -->
+    <!-- ------------------------------------ -->
+    <dt id='long'>Pozycja Long</dt>
+    <dd>Zakład na wzrost ceny. <span class='tags'>#position #long</span><br><span class='code'>Kod w systemie: LongPosition</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 05 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 06: Pozycja Short ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='short'>Pozycja Short</dt>
+    <dd>Zakład na spadek ceny. <span class='tags'>#position #short</span><br><span class='code'>Kod w systemie: ShortPosition</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 06 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+  
+  <!-- ####################################### -->
+  <!-- #### SEKCJA: Kwant i ML w tradingu #### -->
+  <!-- ####################################### -->
+  <div class='glossary-section' data-section='quant-ml-in-trading'>
+    <h3>Kwant i ML w tradingu</h3>
+    <dl>
+    <!-- ----------------------------- -->
+    <!-- ---- DEFINICJA 01: OHLCV ---- -->
+    <!-- ----------------------------- -->
+    <dt id='ohlcv'>OHLCV</dt>
+    <dd>Dane świecowe: otwarcie, maksimum, minimum, zamknięcie, wolumen. <span class='tags'>#data #ohlcv</span><br><span class='code'>Kod w systemie: OHLCV</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------- -->
+    <!-- ---- DEFINICJA 02: LSTM ---- -->
+    <!-- ---------------------------- -->
+    <dt id='lstm'>LSTM</dt>
+    <dd>Rekurencyjna sieć dla sekwencji czasowych. <span class='tags'>#ml #rnn</span><br><span class='code'>Kod w systemie: LSTM</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 03: Random Forest ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='random-forest'>Random Forest</dt>
+    <dd>Metoda zespołowa drzew decyzyjnych. <span class='tags'>#ml #tree</span><br><span class='code'>Kod w systemie: RandomForest</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------- -->
+    <!-- ---- DEFINICJA 04: XGBoost ---- -->
+    <!-- ------------------------------- -->
+    <dt id='xgboost'>XGBoost</dt>
+    <dd>Boosting gradientowy dla danych finansowych. <span class='tags'>#ml #boosting</span><br><span class='code'>Kod w systemie: XGBoost</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- --------------------------------------- -->
+    <!-- ---- DEFINICJA 05: Footprint / CVD ---- -->
+    <!-- --------------------------------------- -->
+    <dt id='footprint'>Footprint / CVD</dt>
+    <dd>Analiza wolumenu i przepływu zleceń. <span class='tags'>#data #volume</span><br><span class='code'>Kod w systemie: FootprintCVD</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 05 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+  
+  <!-- ############################## -->
+  <!-- #### SEKCJA: Style handlu #### -->
+  <!-- ############################## -->
+  <div class='glossary-section' data-section='trading-styles'>
+    <h3>Style handlu</h3>
+    <dl>
+    <!-- -------------------------------- -->
+    <!-- ---- DEFINICJA 01: Scalping ---- -->
+    <!-- -------------------------------- -->
+    <dt id='scalping'>Scalping</dt>
+    <dd>Szybkie transakcje na małych ruchach. <span class='tags'>#style #scalping</span><br><span class='code'>Kod w systemie: Scalping</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------------- -->
+    <!-- ---- DEFINICJA 02: Swing Trading ---- -->
+    <!-- ------------------------------------- -->
+    <dt id='swing'>Swing Trading</dt>
+    <dd>Przetrzymywanie pozycji od dni do tygodni. <span class='tags'>#style #swing</span><br><span class='code'>Kod w systemie: SwingTrading</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ----------------------------------- -->
+    <!-- ---- DEFINICJA 03: Day Trading ---- -->
+    <!-- ----------------------------------- -->
+    <dt id='day-trading'>Day Trading</dt>
+    <dd>Zamykanie pozycji w ciągu dnia. <span class='tags'>#style #day</span><br><span class='code'>Kod w systemie: DayTrading</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------------------- -->
+    <!-- ---- DEFINICJA 04: Position Trading ---- -->
+    <!-- ---------------------------------------- -->
+    <dt id='position-trading'>Position Trading</dt>
+    <dd>Długoterminowe inwestowanie. <span class='tags'>#style #position</span><br><span class='code'>Kod w systemie: PositionTrading</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+  
+  <!-- ####################################################### -->
+  <!-- #### SEKCJA: Terminy specyficzne dla Bybit/Binance #### -->
+  <!-- ####################################################### -->
+  <div class='glossary-section' data-section='bybit-binance-terms'>
+    <h3>Terminy specyficzne dla Bybit/Binance</h3>
+    <dl>
+    <!-- ------------------------------------ -->
+    <!-- ---- DEFINICJA 01: Funding Rate ---- -->
+    <!-- ------------------------------------ -->
+    <dt id='funding'>Funding Rate</dt>
+    <dd>Mechanizm wyrównujący cenę <a href="#perpetual">perpetuals</a> do spotu. <span class='tags'>#exchange #funding</span><br><span class='code'>Kod w systemie: FundingRate</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 01 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ------------------------------ -->
+    <!-- ---- DEFINICJA 02: Margin ---- -->
+    <!-- ------------------------------ -->
+    <dt id='margin'>Margin</dt>
+    <dd>Kapitał zabezpieczający pozycję. <span class='tags'>#exchange #margin</span><br><span class='code'>Kod w systemie: Margin</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 02 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- --------------------------- -->
+    <!-- ---- DEFINICJA 03: PnL ---- -->
+    <!-- --------------------------- -->
+    <dt id='pnl'>PnL</dt>
+    <dd>Zysk i strata (zrealizowana/niezrealizowana). <span class='tags'>#exchange #pnl</span><br><span class='code'>Kod w systemie: PnL</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 03 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    <!-- ---------------------------------- -->
+    <!-- ---- DEFINICJA 04: Liquidacja ---- -->
+    <!-- ---------------------------------- -->
+    <dt id='liquidation'>Liquidacja</dt>
+    <dd>Przymusowe zamknięcie z powodu braku <a href="#margin">marginu</a>. <span class='tags'>#exchange #liquidation</span><br><span class='code'>Kod w systemie: Liquidation</span></dd>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- ~~~~ END DEFINICJA 04 ~~~~ -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  
+    </dl>
+  </div>
+</section>
+
+<section id="tags">
+  <h2>Tagi</h2>
+  <div id='tag-index'></div>
+</section>
 <footer><p>Ostatnia aktualizacja: 2024</p></footer>
 </main>
 </div>
