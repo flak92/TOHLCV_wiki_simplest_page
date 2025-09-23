@@ -6,6 +6,7 @@ LANGS = ["en", "pl"]
 
 config = json.load(open("site_config.json"))
 site_title = config["site_title"]
+site_subtitle = config.get("site_subtitle", {})
 index_content = config["index_content"]
 pages = config["pages"]
 glossary_sections = config["glossary_sections"]
@@ -40,6 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
       title.textContent = dt.textContent;
       card.appendChild(title);
 
+      const originalCodeSpan = dd.querySelector('.code');
+      if (originalCodeSpan) {
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'code';
+        codeDiv.textContent = originalCodeSpan.textContent.trim();
+        card.appendChild(codeDiv);
+      }
+
       const ddClone = dd.cloneNode(true);
       const tagSpan = ddClone.querySelector('.tags');
       if (tagSpan) tagSpan.remove();
@@ -66,14 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
           tagMap[tag].push(card.id);
         });
         card.appendChild(tagDiv);
-      }
-
-      const originalCodeSpan = dd.querySelector('.code');
-      if (originalCodeSpan) {
-        const codeDiv = document.createElement('div');
-        codeDiv.className = 'code';
-        codeDiv.textContent = originalCodeSpan.textContent.trim();
-        card.appendChild(codeDiv);
       }
 
       container.appendChild(card);
