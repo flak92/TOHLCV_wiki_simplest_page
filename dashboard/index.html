@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel obiektów TOHLCV Wiki</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>Panel obiektów</h1>
+    <p>Prosty dashboard do edycji pliku <code>site_objects.json</code> – dodawaj tematy, definicje oraz hashtagi, a następnie pobierz zaktualizowany plik.</p>
+    <p class="info">Zmiany nie zapisują się automatycznie. Po każdej edycji pobierz nowy plik JSON i podmień go w repozytorium.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Podsumowanie danych</h2>
+      <div class="summary-grid">
+        <div><strong>Tematy:</strong> <span id="topic-count">0</span></div>
+        <div><strong>Kategorie:</strong> <span id="category-count">0</span></div>
+        <div><strong>Definicje:</strong> <span id="definition-count">0</span></div>
+      </div>
+      <button id="refresh" type="button">Przeładuj z pliku</button>
+    </section>
+
+    <section>
+      <h2>Dodaj nowy temat</h2>
+      <form id="topic-form" class="card">
+        <label>
+          Identyfikator (slug)
+          <input name="id" required>
+        </label>
+        <label>
+          Tytuł
+          <input name="title" required>
+        </label>
+        <label>
+          Typ sekcji
+          <select name="type">
+            <option value="standard" selected>Zwykła sekcja</option>
+            <option value="glossary">Glosariusz</option>
+          </select>
+        </label>
+        <label>
+          Treść (HTML)
+          <textarea name="content" rows="4" placeholder="&lt;p&gt;...&lt;/p&gt;"></textarea>
+        </label>
+        <label data-glossary-only hidden>
+          Kategorie glosariusza (po przecinku)
+          <input name="categories" placeholder="np. basic-indicators-and-metrics, risk-money-management">
+        </label>
+        <button type="submit">Dodaj temat</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Dodaj definicję</h2>
+      <form id="definition-form" class="card">
+        <label>
+          Identyfikator
+          <input name="id" required>
+        </label>
+        <label>
+          Nazwa
+          <input name="label" required>
+        </label>
+        <label>
+          Opis (HTML)
+          <textarea name="description" rows="4" required></textarea>
+        </label>
+        <label>
+          Kod systemowy
+          <input name="code" placeholder="opcjonalnie">
+        </label>
+        <label>
+          Kategorie (po przecinku)
+          <input name="categories" placeholder="np. basic-indicators-and-metrics">
+        </label>
+        <button type="submit">Dodaj definicję</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Dodaj hashtag do definicji</h2>
+      <form id="tag-form" class="card">
+        <label>
+          Wybierz definicję
+          <select name="definition" required></select>
+        </label>
+        <label>
+          Hashtag (bez #)
+          <input name="tag" required placeholder="np. ml">
+        </label>
+        <button type="submit">Dodaj hashtag</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Aktualna wersja JSON</h2>
+      <textarea id="preview" rows="16" readonly></textarea>
+      <div class="actions">
+        <button id="download" type="button">Pobierz site_objects.json</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Lista obiektów</h2>
+      <details open>
+        <summary>Tematy</summary>
+        <ul id="topic-list"></ul>
+      </details>
+      <details>
+        <summary>Kategorie</summary>
+        <ul id="category-list"></ul>
+      </details>
+      <details>
+        <summary>Definicje</summary>
+        <ul id="definition-list"></ul>
+      </details>
+    </section>
+  </main>
+
+  <template id="object-row">
+    <li>
+      <strong class="object-id"></strong>
+      <span class="object-title"></span>
+    </li>
+  </template>
+
+  <script>
+    const state = {
+      data: { topics: [], categories: [], definitions: [] }
+    };
+
+    const els = {
+      topicCount: document.getElementById('topic-count'),
+      categoryCount: document.getElementById('category-count'),
+      definitionCount: document.getElementById('definition-count'),
+      topicList: document.getElementById('topic-list'),
+      categoryList: document.getElementById('category-list'),
+      definitionList: document.getElementById('definition-list'),
+      preview: document.getElementById('preview'),
+      topicForm: document.getElementById('topic-form'),
+      definitionForm: document.getElementById('definition-form'),
+      tagForm: document.getElementById('tag-form'),
+      tagDefinitionSelect: document.querySelector('#tag-form select[name="definition"]'),
+      refresh: document.getElementById('refresh'),
+      download: document.getElementById('download')
+    };
+    const topicTypeSelect = els.topicForm.querySelector('select[name="type"]');
+    const topicGlossaryFields = els.topicForm.querySelector('[data-glossary-only]');
+
+    async function loadData() {
+      try {
+        const response = await fetch('../site_objects.json');
+        if (!response.ok) {
+          throw new Error('status ' + response.status);
+        }
+        state.data = await response.json();
+      } catch (error) {
+        console.error(error);
+        alert('Nie udało się pobrać site_objects.json. Upewnij się, że uruchomiłeś serwer (np. python -m http.server).');
+      }
+      render();
+    }
+
+    function render() {
+      const { topics, categories, definitions } = state.data;
+      els.topicCount.textContent = topics.length;
+      els.categoryCount.textContent = categories.length;
+      els.definitionCount.textContent = definitions.length;
+
+      renderList(els.topicList, topics, item => `${item.id} — ${item.title}`);
+      renderList(els.categoryList, categories, item => {
+        const amount = (item.definition_ids || []).length;
+        return `${item.id} — ${item.title} (${amount} definicji)`;
+      });
+      renderList(els.definitionList, definitions, item => {
+        const tags = item.tags && item.tags.length ? ` [#${item.tags.join(', #')}]` : '';
+        return `${item.id} — ${item.label}${tags}`;
+      });
+
+      els.tagDefinitionSelect.innerHTML = definitions
+        .map(def => `<option value="${def.id}">${def.id} — ${def.label}</option>`)
+        .join('');
+
+      els.preview.value = JSON.stringify(state.data, null, 2);
+    }
+
+    function renderList(container, items, makeLabel) {
+      container.innerHTML = '';
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = makeLabel(item);
+        container.appendChild(li);
+      });
+    }
+
+    topicTypeSelect.addEventListener('change', event => {
+      const isGlossary = event.target.value === 'glossary';
+      topicGlossaryFields.hidden = !isGlossary;
+    });
+
+    els.topicForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const topic = {
+        id: formData.get('id').trim(),
+        type: formData.get('type') || 'standard',
+        title: formData.get('title').trim(),
+        content: formData.get('content').trim()
+      };
+      if (!topic.id || !topic.title) {
+        alert('Identyfikator i tytuł są wymagane.');
+        return;
+      }
+      if (topic.type === 'glossary') {
+        const categories = formData.get('categories').split(',').map(v => v.trim()).filter(Boolean);
+        topic.categories = categories;
+      }
+      state.data.topics.push(topic);
+      form.reset();
+      topicTypeSelect.value = 'standard';
+      topicGlossaryFields.hidden = true;
+      render();
+    });
+
+    els.definitionForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const definition = {
+        id: formData.get('id').trim(),
+        label: formData.get('label').trim(),
+        description: formData.get('description').trim()
+      };
+      const code = formData.get('code').trim();
+      if (code) definition.code = code;
+      const categories = formData.get('categories').split(',').map(v => v.trim()).filter(Boolean);
+      const existing = state.data.definitions.find(def => def.id === definition.id);
+      if (existing) {
+        alert('Definicja o takim ID już istnieje.');
+        return;
+      }
+      state.data.definitions.push(definition);
+      if (categories.length) {
+        categories.forEach(catId => {
+          let category = state.data.categories.find(cat => cat.id === catId);
+          if (!category) {
+            category = { id: catId, title: catId, definition_ids: [] };
+            state.data.categories.push(category);
+          }
+          if (!Array.isArray(category.definition_ids)) {
+            category.definition_ids = [];
+          }
+          if (!category.definition_ids.includes(definition.id)) {
+            category.definition_ids.push(definition.id);
+          }
+        });
+      }
+      event.target.reset();
+      render();
+    });
+
+    els.tagForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const definitionId = formData.get('definition');
+      const tag = formData.get('tag').trim();
+      if (!tag) {
+        alert('Hashtag nie może być pusty.');
+        return;
+      }
+      const definition = state.data.definitions.find(def => def.id === definitionId);
+      if (!definition) {
+        alert('Nie znaleziono definicji.');
+        return;
+      }
+      if (!definition.tags) definition.tags = [];
+      if (!definition.tags.includes(tag)) {
+        definition.tags.push(tag);
+      }
+      event.target.reset();
+      render();
+    });
+
+    els.refresh.addEventListener('click', loadData);
+
+    els.download.addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(state.data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'site_objects.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+
+    loadData();
+  </script>
+</body>
+</html>

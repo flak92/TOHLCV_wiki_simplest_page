@@ -1,0 +1,137 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  color: #111;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  background: inherit;
+  color: inherit;
+}
+
+header {
+  max-width: 960px;
+  margin: 0 auto 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+header h1 {
+  margin-top: 0;
+}
+
+header .info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.summary-grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.summary-grid div {
+  background: rgba(15, 23, 42, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+}
+
+.card {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+ul li::before {
+  content: "•";
+  color: #0f172a;
+  display: inline-block;
+  width: 1rem;
+  margin-left: -1rem;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+details + details {
+  margin-top: 1rem;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 1rem;
+  }
+
+  section {
+    padding: 1.25rem 1.5rem;
+  }
+}

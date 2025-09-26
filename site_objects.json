@@ -1,0 +1,501 @@
+{
+  "topics": [
+    {
+      "id": "intro",
+      "type": "standard",
+      "title": "Strona Główna",
+      "content": "<p>Opis strony i jak się po niej poruszać. Efektywniej jest, jeżeli myślisz w obiektach, bo gadanie to dopasowywanie algorytmów w embeddingach, które składają zdania lub LowerOrUpperCamelCase'y. Zobacz <a href=\"#glossary\">Definicje</a>.</p>"
+    },
+    {
+      "id": "ml-vs-hardcoded",
+      "type": "standard",
+      "title": "ML vs Hardcoded",
+      "content": "<p>Różnice między modelami opartymi na danych a aplikacjami o stałych regułach. Porównaj podejścia w <a href=\"#strategy-comparisons\">Porównaniach Strategii</a>.</p>"
+    },
+    {
+      "id": "strategy-comparisons",
+      "type": "standard",
+      "title": "Porównania Strategii",
+      "content": "<p>Notatki dotyczące porównywania prostych strategii handlowych i podejść kalibracyjnych. Dowiedz się więcej o podstawach w <a href=\"#indicators\">Wskaźnikach</a>.</p>"
+    },
+    {
+      "id": "indicators",
+      "type": "standard",
+      "title": "Wskaźniki",
+      "content": "<p>Uwagi terminologiczne: wskaźnik vs indykator vs oscylator. Wróć do podstaw w <a href=\"#intro\">Wprowadzeniu</a>.</p>"
+    },
+    {
+      "id": "how-to-deploy",
+      "type": "standard",
+      "title": "Jak Wdrożyć",
+      "content": "<p>Kroki potrzebne do przygotowania i uruchomienia Algorading Web App. Przed wdrożeniem przejrzyj <a href=\"#strategy-comparisons\">Porównania Strategii</a>.</p>"
+    },
+    {
+      "id": "glossary",
+      "type": "glossary",
+      "title": "Glosariusz",
+      "content": "<p>Definicje pogrupowane według sekcji. W źródle HTML znajdziesz ozdobne komentarze, które pomagają dopisywać nowe pojęcia.</p>",
+      "categories": [
+        "basic-indicators-and-metrics",
+        "risk-money-management",
+        "instruments-markets",
+        "quant-ml-in-trading",
+        "trading-styles",
+        "bybit-binance-terms"
+      ]
+    },
+    {
+      "id": "tags",
+      "type": "tag-index",
+      "title": "Tagi",
+      "content": "<div id='tag-index'></div>"
+    }
+  ],
+  "categories": [
+    {
+      "id": "basic-indicators-and-metrics",
+      "title": "Podstawowe wskaźniki i metryki",
+      "definition_ids": [
+        "rsi",
+        "macd",
+        "sma",
+        "ema",
+        "ma",
+        "cagr",
+        "sharpe",
+        "sortino",
+        "maxdd"
+      ]
+    },
+    {
+      "id": "risk-money-management",
+      "title": "Zarządzanie ryzykiem i kapitałem",
+      "definition_ids": [
+        "kelly",
+        "stop-loss",
+        "trailing-stop",
+        "take-profit",
+        "trailing-take-profit",
+        "leverage",
+        "martingale",
+        "delta-neutral",
+        "hedging"
+      ]
+    },
+    {
+      "id": "instruments-markets",
+      "title": "Instrumenty i rynki",
+      "definition_ids": [
+        "spot",
+        "perpetual",
+        "options",
+        "etfs",
+        "long",
+        "short"
+      ]
+    },
+    {
+      "id": "quant-ml-in-trading",
+      "title": "Kwant i ML w tradingu",
+      "definition_ids": [
+        "ohlcv",
+        "lstm",
+        "random-forest",
+        "xgboost",
+        "footprint"
+      ]
+    },
+    {
+      "id": "trading-styles",
+      "title": "Style handlu",
+      "definition_ids": [
+        "scalping",
+        "swing",
+        "day-trading",
+        "position-trading"
+      ]
+    },
+    {
+      "id": "bybit-binance-terms",
+      "title": "Terminy specyficzne dla Bybit/Binance",
+      "definition_ids": [
+        "funding",
+        "margin",
+        "pnl",
+        "liquidation"
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "rsi",
+      "label": "RSI",
+      "description": "Oscylator mierzący siłę trendu (wykupienie/wyprzedanie).",
+      "tags": [
+        "indicator",
+        "oscillator"
+      ],
+      "code": "RSI"
+    },
+    {
+      "id": "macd",
+      "label": "MACD",
+      "description": "Wskaźnik oparty na różnicy <a href=\"#ma\">MA</a>.",
+      "tags": [
+        "indicator",
+        "trend"
+      ],
+      "code": "MACD"
+    },
+    {
+      "id": "sma",
+      "label": "SMA",
+      "description": "Prosta średnia ruchoma, forma <a href=\"#ma\">MA</a>.",
+      "tags": [
+        "indicator",
+        "average"
+      ],
+      "code": "SMA"
+    },
+    {
+      "id": "ema",
+      "label": "EMA",
+      "description": "Wykładnicza średnia ruchoma, ważona <a href=\"#ma\">MA</a>.",
+      "tags": [
+        "indicator",
+        "average"
+      ],
+      "code": "EMA"
+    },
+    {
+      "id": "ma",
+      "label": "MA",
+      "description": "Uogólniona średnia ruchoma; baza dla <a href=\"#macd\">MACD</a> i <a href=\"#sma\">SMA</a>.",
+      "tags": [
+        "indicator",
+        "average"
+      ],
+      "code": "MA"
+    },
+    {
+      "id": "cagr",
+      "label": "CAGR",
+      "description": "Skumulowana średnioroczna stopa zwrotu.",
+      "tags": [
+        "metric",
+        "return"
+      ],
+      "code": "CAGR"
+    },
+    {
+      "id": "sharpe",
+      "label": "Sharpe Ratio",
+      "description": "Miara zysku względem ryzyka zmienności.",
+      "tags": [
+        "metric",
+        "risk"
+      ],
+      "code": "SharpeRatio"
+    },
+    {
+      "id": "sortino",
+      "label": "Sortino Ratio",
+      "description": "Wariant Sharpe'a uwzględniający tylko ryzyko spadków.",
+      "tags": [
+        "metric",
+        "risk"
+      ],
+      "code": "SortinoRatio"
+    },
+    {
+      "id": "maxdd",
+      "label": "Max Drawdown",
+      "description": "Maksymalne obsunięcie kapitału.",
+      "tags": [
+        "metric",
+        "risk"
+      ],
+      "code": "MaxDrawdown"
+    },
+    {
+      "id": "kelly",
+      "label": "Kelly Sizing",
+      "description": "Optymalny dobór wielkości pozycji.",
+      "tags": [
+        "risk",
+        "position-sizing"
+      ],
+      "code": "KellySizing"
+    },
+    {
+      "id": "stop-loss",
+      "label": "Stop Loss",
+      "description": "Zlecenie ograniczające stratę; zobacz <a href=\"#trailing-stop\">Trailing Stop</a>.",
+      "tags": [
+        "risk",
+        "order"
+      ],
+      "code": "StopLossMain"
+    },
+    {
+      "id": "trailing-stop",
+      "label": "Trailing Stop",
+      "description": "Stop loss przesuwający się z ceną.",
+      "tags": [
+        "risk",
+        "order"
+      ],
+      "code": "TrailingStop"
+    },
+    {
+      "id": "take-profit",
+      "label": "Take Profit",
+      "description": "Automatyczne zamknięcie pozycji na zysku.",
+      "tags": [
+        "risk",
+        "order"
+      ],
+      "code": "TakeProfit"
+    },
+    {
+      "id": "trailing-take-profit",
+      "label": "Trailing Take Profit",
+      "description": "Take profit podążający za ceną.",
+      "tags": [
+        "risk",
+        "order"
+      ],
+      "code": "TrailingTakeProfit"
+    },
+    {
+      "id": "leverage",
+      "label": "Leverage",
+      "description": "Dźwignia finansowa.",
+      "tags": [
+        "risk",
+        "leverage"
+      ],
+      "code": "Leverage"
+    },
+    {
+      "id": "martingale",
+      "label": "Martingale",
+      "description": "Strategia podwajania stawki po stracie.",
+      "tags": [
+        "risk",
+        "strategy"
+      ],
+      "code": "Martingale"
+    },
+    {
+      "id": "delta-neutral",
+      "label": "Delta Neutral",
+      "description": "Pozycja zabezpieczona przed ruchem kierunkowym.",
+      "tags": [
+        "risk",
+        "hedging"
+      ],
+      "code": "DeltaNeutral"
+    },
+    {
+      "id": "hedging",
+      "label": "Hedging",
+      "description": "Zabezpieczenie ryzyka poprzez pozycje kompensujące.",
+      "tags": [
+        "risk",
+        "hedging"
+      ],
+      "code": "Hedging"
+    },
+    {
+      "id": "spot",
+      "label": "Rynek Spot",
+      "description": "Natychmiastowa wymiana aktywów.",
+      "tags": [
+        "market",
+        "spot"
+      ],
+      "code": "SpotMarket"
+    },
+    {
+      "id": "perpetual",
+      "label": "Kontrakty Perpetual",
+      "description": "Futures bez wygaśnięcia, powiązane z <a href=\"#funding\">fundingiem</a>.",
+      "tags": [
+        "market",
+        "futures"
+      ],
+      "code": "PerpetualFutures"
+    },
+    {
+      "id": "options",
+      "label": "Opcje",
+      "description": "Prawo do kupna lub sprzedaży w przyszłości.",
+      "tags": [
+        "market",
+        "derivatives"
+      ],
+      "code": "Options"
+    },
+    {
+      "id": "etfs",
+      "label": "ETF-y",
+      "description": "Fundusze notowane na giełdzie.",
+      "tags": [
+        "market",
+        "etf"
+      ],
+      "code": "ETFs"
+    },
+    {
+      "id": "long",
+      "label": "Pozycja Long",
+      "description": "Zakład na wzrost ceny.",
+      "tags": [
+        "position",
+        "long"
+      ],
+      "code": "LongPosition"
+    },
+    {
+      "id": "short",
+      "label": "Pozycja Short",
+      "description": "Zakład na spadek ceny.",
+      "tags": [
+        "position",
+        "short"
+      ],
+      "code": "ShortPosition"
+    },
+    {
+      "id": "ohlcv",
+      "label": "OHLCV",
+      "description": "Dane świecowe: otwarcie, maksimum, minimum, zamknięcie, wolumen.",
+      "tags": [
+        "data",
+        "ohlcv"
+      ],
+      "code": "OHLCV"
+    },
+    {
+      "id": "lstm",
+      "label": "LSTM",
+      "description": "Rekurencyjna sieć dla sekwencji czasowych.",
+      "tags": [
+        "ml",
+        "rnn"
+      ],
+      "code": "LSTM"
+    },
+    {
+      "id": "random-forest",
+      "label": "Random Forest",
+      "description": "Metoda zespołowa drzew decyzyjnych.",
+      "tags": [
+        "ml",
+        "tree"
+      ],
+      "code": "RandomForest"
+    },
+    {
+      "id": "xgboost",
+      "label": "XGBoost",
+      "description": "Boosting gradientowy dla danych finansowych.",
+      "tags": [
+        "ml",
+        "boosting"
+      ],
+      "code": "XGBoost"
+    },
+    {
+      "id": "footprint",
+      "label": "Footprint / CVD",
+      "description": "Analiza wolumenu i przepływu zleceń.",
+      "tags": [
+        "data",
+        "volume"
+      ],
+      "code": "FootprintCVD"
+    },
+    {
+      "id": "scalping",
+      "label": "Scalping",
+      "description": "Szybkie transakcje na małych ruchach.",
+      "tags": [
+        "style",
+        "scalping"
+      ],
+      "code": "Scalping"
+    },
+    {
+      "id": "swing",
+      "label": "Swing Trading",
+      "description": "Przetrzymywanie pozycji od dni do tygodni.",
+      "tags": [
+        "style",
+        "swing"
+      ],
+      "code": "SwingTrading"
+    },
+    {
+      "id": "day-trading",
+      "label": "Day Trading",
+      "description": "Zamykanie pozycji w ciągu dnia.",
+      "tags": [
+        "style",
+        "day"
+      ],
+      "code": "DayTrading"
+    },
+    {
+      "id": "position-trading",
+      "label": "Position Trading",
+      "description": "Długoterminowe inwestowanie.",
+      "tags": [
+        "style",
+        "position"
+      ],
+      "code": "PositionTrading"
+    },
+    {
+      "id": "funding",
+      "label": "Funding Rate",
+      "description": "Mechanizm wyrównujący cenę <a href=\"#perpetual\">perpetuals</a> do spotu.",
+      "tags": [
+        "exchange",
+        "funding"
+      ],
+      "code": "FundingRate"
+    },
+    {
+      "id": "margin",
+      "label": "Margin",
+      "description": "Kapitał zabezpieczający pozycję.",
+      "tags": [
+        "exchange",
+        "margin"
+      ],
+      "code": "Margin"
+    },
+    {
+      "id": "pnl",
+      "label": "PnL",
+      "description": "Zysk i strata (zrealizowana/niezrealizowana).",
+      "tags": [
+        "exchange",
+        "pnl"
+      ],
+      "code": "PnL"
+    },
+    {
+      "id": "liquidation",
+      "label": "Liquidacja",
+      "description": "Przymusowe zamknięcie z powodu braku <a href=\"#margin\">marginu</a>.",
+      "tags": [
+        "exchange",
+        "liquidation"
+      ],
+      "code": "Liquidation"
+    }
+  ]
+}

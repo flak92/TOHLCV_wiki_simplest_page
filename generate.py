@@ -2,26 +2,23 @@ import json
 import textwrap
 from pathlib import Path
 
-LANGS = ["en", "pl"]
-
 config = json.load(open("site_config.json"))
+objects_config = json.load(open("site_objects.json"))
+
+LANG = config.get("language", "pl")
 site_title = config["site_title"]
-site_subtitle = config.get("site_subtitle", {})
 index_content = config["index_content"]
 pages = config["pages"]
-glossary_sections = config["glossary_sections"]
 
-CODE_LABELS = {
-    "en": "Coded as: ",
-    "pl": "Kod w systemie: ",
-}
+labels = config["labels"]
+code_label = labels["code"]
+comment_labels = labels["comments"]
+home_label = labels.get("navigation", {}).get("home", "Strona główna")
+footer_text = labels.get("footer", "")
 
-COMMENT_LABELS = {
-    "en": {"section": "SECTION", "definition": "DEFINITION"},
-    "pl": {"section": "SEKCJA", "definition": "DEFINICJA"},
-}
-
-Path("pl").mkdir(exist_ok=True)
+topics = {topic["id"]: topic for topic in objects_config["topics"]}
+categories = {category["id"]: category for category in objects_config["categories"]}
+definitions = {definition["id"]: definition for definition in objects_config["definitions"]}
 
 tag_script = r'''
 <script>
@@ -113,23 +110,25 @@ def comment_box(text, symbol="#", indent=""):
     return [f"{indent}<!-- {border} -->", f"{indent}<!-- {middle} -->", f"{indent}<!-- {border} -->"]
 
 
-def build_glossary_html(lang):
+def build_glossary_html(category_ids):
     lines = []
-    labels = COMMENT_LABELS.get(lang, COMMENT_LABELS["en"])
-    code_label = CODE_LABELS.get(lang, CODE_LABELS["en"])
-    for section in glossary_sections:
-        title = section["title"][lang]
+    labels = comment_labels
+    for category_id in category_ids:
+        section = categories[category_id]
+        title = section["title"]
         lines.append("")
         lines.extend(comment_box(f"{labels['section']}: {title}", "#"))
-        lines.append(f"<div class='glossary-section' data-section='{section['slug']}'>")
+        lines.append(f"<div class='glossary-section' data-section='{category_id}'>")
         lines.append(f"  <h3>{title}</h3>")
         lines.append("  <dl>")
-        for index, item in enumerate(section["items"], start=1):
-            item_title = item["label"][lang]
+        definition_ids = section.get("definition_ids", [])
+        for index, definition_id in enumerate(definition_ids, start=1):
+            item = definitions[definition_id]
+            item_title = item["label"]
             definition_label = f"{labels['definition']} {index:02d}: {item_title}"
             lines.extend([f"  {line}" for line in comment_box(definition_label, "-")])
             lines.append(f"  <dt id='{item['id']}'>{item_title}</dt>")
-            description = item["description"][lang]
+            description = item["description"]
             tags = item.get("tags", [])
             tags_html = ""
             if tags:
@@ -147,25 +146,6 @@ def build_glossary_html(lang):
     return "\n".join(lines)
 
 
-def build_lang_switch(lang):
-    if lang == "en":
-        return (
-            "<details class=\"language\">\n"
-            "  <summary>EN</summary>\n"
-            "  <a href=\"index.html\">EN</a>\n"
-            "  <a href=\"pl/index.html\">PL</a>\n"
-            "</details>"
-        )
-    else:
-        return (
-            "<details class=\"language\">\n"
-            "  <summary>PL</summary>\n"
-            "  <a href=\"../index.html\">EN</a>\n"
-            "  <a href=\"index.html\">PL</a>\n"
-            "</details>"
-        )
-
-
 def normalize_fragment(fragment, indent="  "):
     stripped = fragment.strip()
     if not stripped:
@@ -174,51 +154,57 @@ def normalize_fragment(fragment, indent="  "):
     return [f"{indent}{line.rstrip()}" for line in dedented.splitlines()]
 
 
-def build_index(lang):
-    path = "index.html" if lang == "en" else "pl/index.html"
-    css_path = "styles/main.css" if lang == "en" else "../styles/main.css"
-    footer_text = "Last updated: 2024" if lang == "en" else "Ostatnia aktualizacja: 2024"
-    home_label = "Home" if lang == "en" else "Strona główna"
+def build_index():
+    path = "index.html"
+    css_path = "styles/main.css"
     menu_items = [f"<li><a href=\"#home\">{home_label}</a></li>"]
+    localized_site_title = site_title
+    localized_index_content = index_content
     sections = [
         "\n".join(
             [
                 "<section id=\"home\">",
-                f"  <h2>{site_title[lang]}</h2>",
-                *normalize_fragment(index_content[lang]),
+                f"  <h2>{localized_site_title}</h2>",
+                *normalize_fragment(localized_index_content),
                 "</section>",
             ]
         )
     ]
     for page in pages:
-        menu_items.append(f"<li><a href=\"#{page['slug']}\">{page['title'][lang]}</a></li>")
-        content_html = page["content"][lang]
-        if page["slug"] == "glossary":
-            content_html = content_html + "\n" + build_glossary_html(lang)
+        slug = page.get("slug")
+        topic_id = page.get("topic", slug)
+        topic = topics.get(topic_id)
+        if topic is None:
+            raise KeyError(f"Topic '{topic_id}' referenced in pages is not defined in site_objects.json")
+        title = topic["title"]
+        menu_items.append(f"<li><a href=\"#{slug}\">{title}</a></li>")
+        content_html = topic["content"]
+        if topic.get("type") == "glossary":
+            category_ids = topic.get("categories", [])
+            content_html = content_html + "\n" + build_glossary_html(category_ids)
         section_lines = [
-            f"<section id=\"{page['slug']}\">",
-            f"  <h2>{page['title'][lang]}</h2>",
+            f"<section id=\"{slug}\">",
+            f"  <h2>{title}</h2>",
             *normalize_fragment(content_html),
             "</section>",
         ]
         sections.append("\n".join(section_lines))
     menu_html = "\n".join(f"  {item}" for item in menu_items)
     sections_html = "\n\n".join(sections)
-    switch = build_lang_switch(lang)
+    page_title = localized_site_title
     html = f"""<!DOCTYPE html>
-<html lang=\"{lang}\">
+<html lang=\"{LANG}\">
 <head>
 <meta charset=\"UTF-8\">
-<title>{site_title[lang]}</title>
+<title>{page_title}</title>
 <link rel=\"stylesheet\" href=\"{css_path}\">
 </head>
 <body>
 <input type=\"checkbox\" id=\"theme-toggle\">
 <div class=\"wrapper\">
 <header class=\"top-bar\">
-  <h1 class=\"site-title\"><a href=\"#home\">{site_title[lang]}</a></h1>
+  <h1 class=\"site-title\"><a href=\"#home\">{page_title}</a></h1>
   <div class=\"controls\">
-{switch}
     <label for=\"theme-toggle\" class=\"theme-switch\"></label>
   </div>
 </header>
@@ -240,5 +226,4 @@ def build_index(lang):
     Path(path).write_text(html)
 
 
-for lang in LANGS:
-    build_index(lang)
+build_index()
